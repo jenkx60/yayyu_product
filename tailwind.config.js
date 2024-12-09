@@ -30,12 +30,27 @@ module.exports = {
         primary: "#FCBA41",
         footer: "#EFEFEF",
         news: "#636060",
+        coloring: "#FF6464",
       },
       fontFamily: {
         dmSans: ['"DM Sans"', "sans-serif"],
         dmSerif: ['"DM Serif Text"', "serif"],
+        dmSerifDis: ['"DM Serif Display"', "serif"],
       },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          //overide default container padding
+          sm: "2rem",
+          lg: "4rem",
+          xl: "5rem",
+          "2xl": "6rem",
+        },
+      }
     },
   },
   plugins: [],
 };
+
+
