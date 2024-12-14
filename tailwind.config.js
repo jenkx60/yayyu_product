@@ -7,7 +7,7 @@ module.exports = {
   ],
   theme: { 
       screens: {
-        'sm': '640px',
+        'sm': '400px',
         // => @media (min-width: 640px) { ... }
 
         'md': '768px',
@@ -31,6 +31,7 @@ module.exports = {
         footer: "#EFEFEF",
         news: "#636060",
         coloring: "#FF6464",
+        activehover: "#FCBA41",
       },
       fontFamily: {
         dmSans: ['"DM Sans"', "sans-serif"],
@@ -38,7 +39,7 @@ module.exports = {
         dmSerifDis: ['"DM Serif Display"', "serif"],
       },
       container: {
-        center: true,
+        center: false,
         padding: {
           DEFAULT: "1rem",
           //overide default container padding

@@ -8,6 +8,11 @@ export default function Home() {
       <nav>
         <Navbar />
       </nav>
+
+      <main>
+        
+      </main>
+
       <footer>
         <Footer />
       </footer>
