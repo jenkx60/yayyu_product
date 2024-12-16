@@ -1,6 +1,4 @@
-"use client"
 import React from 'react';
-import { Link } from 'next/link'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MdListAlt, MdLogout } from 'react-icons/md';
@@ -9,9 +7,9 @@ import { HiOutlineInbox } from 'react-icons/hi';
 import { TbLockPassword, TbUserEdit } from 'react-icons/tb';
 import Image from 'next/image';
 import account from '../public/Frame 22 account.svg';
-import emptycart from '../public/empty-cart 1.svg';
+import wishlist from '../public/wishlist 1.svg';
 
-const Account = () => {
+const Page = () => {
   return (
     <div className='bg-gray-100'>
         <nav>
@@ -29,7 +27,9 @@ const Account = () => {
                 <div className='w-3/12 h-full'>
                     <div className=' bg-white w-full h-auto mt-16 mb-28'>
                         <ul className='flex flex-col text-black font-dmSans font-medium text-sm pb-24'>
-                            <li className='flex gap-1 place-items-center pl-2 py-4 active:bg-gray-100 hover:bg-gray-100 active:border-r-4 hover:border-r-4 border-r-activehover'><MdListAlt /> Order List</li>
+                            <Link href='/orderlist'>
+                                <li className='flex gap-1 place-items-center pl-2 py-4 active:bg-gray-100 hover:bg-gray-100 active:border-r-4 hover:border-r-4 border-r-activehover'><MdListAlt /> Order List</li>
+                            </Link>
                             <li className='flex gap-1 place-items-center pl-2 py-4 active:bg-gray-100 hover:bg-gray-100 active:border-r-4 hover:border-r-4 border-r-activehover'><FaRegHeart />Wish List</li>
                             <li className='flex gap-1 place-items-center pl-2 py-4 active:bg-gray-100 hover:bg-gray-100 active:border-r-4 hover:border-r-4 border-r-activehover'><HiOutlineInbox />Inbox</li>
                             <li className='flex gap-1 place-items-center pl-2 py-4 active:bg-gray-100 hover:bg-gray-100 active:border-r-4 hover:border-r-4 border-r-activehover'><TbUserEdit />Edit Account</li>
@@ -43,7 +43,7 @@ const Account = () => {
                     <div className='flex flex-col justify-center place-items-center gap-3'>
                         <div className='bg-green-300 flex'>
                             <Image 
-                                src={emptycart}
+                                src={wishlist}
                                 alt='emptycart'
                                 className='flex place-items-center'
                             />
@@ -66,4 +66,4 @@ const Account = () => {
   )
 }
 
-export default Account
+export default Page

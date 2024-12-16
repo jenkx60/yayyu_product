@@ -1,21 +1,31 @@
+import React from 'react';
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import heroimg from './public/Frame 27.svg';
+import Carousel from 'react-bootstrap/Carousel';
 
-export default function Home() {
+
+const page = () => {
   return (
-    <div >
-      <nav>
+    <div>
+      {/* <div>
         <Navbar />
-      </nav>
+      </div>
 
       <main>
-        
+        <div>
+          <div>
+            <Carousel />
+          </div>
+        </div>
       </main>
 
-      <footer>
+      <div>
         <Footer />
-      </footer>
+      </div> */}
     </div>
-  );
+  )
 }
+
+export default page

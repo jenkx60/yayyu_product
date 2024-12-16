@@ -47,7 +47,7 @@ const Navbar = () => {
         }
     },[]);
   return (
-        <div>
+    <div>
         <nav>
             <div className=' bg-white w-full h-auto flex justify-between items-center p-5'>
                 {/* <div className='container '> */}
