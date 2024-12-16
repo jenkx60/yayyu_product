@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,7 +14,7 @@ const Footer = () => {
             <div className=' flex flex-col lg:flex-row justify-center lg:justify-evenly gap-8 '>
 
                 <div className='container w-full bg-red-300'>
-                    <Link href='/' >
+                    <Link href='/home' >
                         <Image 
                             src={yayyuLogo}
                             alt='Yayyu Logo'
