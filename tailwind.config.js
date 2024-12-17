@@ -32,6 +32,7 @@ module.exports = {
         news: "#636060",
         coloring: "#FF6464",
         activehover: "#FCBA41",
+        smalltextcolor: "#585656",
       },
       fontFamily: {
         dmSans: ['"DM Sans"', "sans-serif"],
