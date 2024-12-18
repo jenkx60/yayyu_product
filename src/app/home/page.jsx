@@ -20,10 +20,10 @@ const page = () => {
       return products.map((item) => {
         const { id, name, image, price } = item;
         return (
-          <li key={id}>
-              <Image src={image} alt='model' width={50} height={50} />
-              <h3>{name}</h3>
-              <p>₦{price.toLocaleString()}</p>
+          <li key={id} className='text-black'>
+              <Image src={image} alt='model' width={300} height={250} />
+              <h3 className='flex justify-center font-dmSans text-sm leading-4 mt-4'>{name}</h3>
+              <p className='flex justify-center font-dmSerifDis text-xl leading-6'>₦{price.toLocaleString()}.00</p>
           </li>
         );
       });
@@ -59,11 +59,36 @@ const page = () => {
           </div>
         </div>
 
-      <div>
-        <ul>
-          {productItems()}
-        </ul>
-      </div>
+        <div className='container font-dmSans mt-12 mb-8'>
+          <h1 className='font-normal leading-7 text-xl tracking-wide text-black'>NEW ARRIVALS</h1>
+        </div>
+        <div className='container'>
+          <ul className='flex mb-10'>
+            {productItems()}
+            {productItems()}
+            {productItems()}
+            {productItems()}
+          </ul>
+        </div>
+
+        <div className='container'>
+          <ul className='flex mb-8'>
+            {productItems()}
+            {productItems()}
+            {productItems()}
+            {productItems()}
+          </ul>
+        </div>
+
+        <div className='container flex justify-center'>
+          <button className='bg-black hover:bg-activehover font-dmSans font-normal text-sm leading-4 w-2/12 align-middle flex justify-center items-center py-4'>VIEW ALL</button>
+        </div>
+
+        <div className='container font-dmSans mt-12 mb-8'>
+          <h1 className='font-normal leading-7 text-xl tracking-wide text-black'>EXPLORE MORE</h1>
+        </div>
+
+        
       </main>
       
 
