@@ -9,6 +9,7 @@ import suit from '../public/component 6.svg';
 import adire from '../public/component 7.svg';
 import kaftan from '../public/component 8.svg';
 import gown from '../public/component 9.svg';
+import Link from 'next/link';
 
 const page = () => {
   const products = [
@@ -93,37 +94,60 @@ const page = () => {
         </div>
 
         <div className='container grid grid-cols-2 w-full gap-3 mb-10'>
-          <div>
+          <div className='relative'>
             <Image 
               src={suit}
               alt='suit'
               width={612}
               height={475}
             />
+            <div className='absolute bg-black inset-44 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer'>
+              <Link href="/shopping">
+                <button>SHOP NOW</button>
+              </Link>
+            </div>
           </div>
-          <div>
+
+          <div className='relative'>
             <Image
               src={adire}
               alt='adire'
               width={612}
               height={475}
             />
+            <div className='absolute bg-black inset-44 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer'>
+              <Link href="/shopping">
+                <button>SHOP NOW</button>
+              </Link>
+            </div>
           </div>
-          <div>
+
+          <div className='relative'>
             <Image 
               src={kaftan}
               alt='kaftan'
               width={612}
               height={475}
             />
+            <div className='absolute bg-black inset-44 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer'>
+              <Link href="/shopping">
+                <button>SHOP NOW</button>
+              </Link>
+            </div>
           </div>
-          <div>
+
+          <div className='relative'>
             <Image 
               src={gown}
               alt='gown'
               width={612}
               height={475}
             />
+            <div className='absolute bg-black inset-44 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer'>
+              <Link href="/shopping">
+                <button>SHOP NOW</button>
+              </Link>
+            </div>
           </div>
         </div>
 
