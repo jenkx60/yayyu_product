@@ -57,7 +57,7 @@ const Carousel = () => {
                             alt='Hero Image'
                             width={200}
                             height={200}
-                            className='w-full h-full object-fill rounded-lg'
+                            className='w-full h-full object-fill'
                         />
                     <div className='absolute inset-0 bg-opacity-40 rounded-lg flex flex-col justify-center place-items-center p-6'>
                         <h3 className='text-5xl font-normal text-white font-dmSans leading-10 mb-4'>{items[currentSlide].name}</h3>

@@ -26,7 +26,7 @@ const Contact = () => {
     })
 
     const handleSubmission = (values) => {
-        console.log('Form Submitted', values);
+        alert('Form Submitted', values);
     }
 
     // let handleSubmit = (e) => {
@@ -79,14 +79,15 @@ const Contact = () => {
                                 </div>
 
                                 <div className=''>
-                                    <label htmlFor='enquiry' className='block text-black font-dmSans text-sm leading-6 font-medium pb-2'>Enquiry</label>
+                                    <label htmlFor='message' className='block text-black font-dmSans text-sm leading-6 font-medium pb-2'>Enquiry</label>
                                     <div className='w-full'>
-                                        <textarea
-                                            name='enquiry'
+                                        <Field
+                                            as='textarea'
+                                            name='message'
                                             placeholder='Enquiry'
                                             rows={5}
                                             className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
-                                        ></textarea>
+                                        />
                                         <ErrorMessage name='message' component='div' className='text-red-500' />
                                     </div>
                                 </div>
