@@ -40,7 +40,7 @@ module.exports = {
         dmSerifDis: ['"DM Serif Display"', "serif"],
       },
       container: {
-        center: false,
+        center: true,
         padding: {
           DEFAULT: "1rem",
           //overide default container padding
