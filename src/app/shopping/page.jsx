@@ -15,17 +15,61 @@ const Shopping = () => {
             <Navbar />
         </div>
 
-        <main>
+        <div>
+            <Image 
+                src={shophead}
+                alt='shop Head'
+            />
+        </div>
+
+        <main className=' container mt-20'>
             <div>
-                <Image 
-                    src={shophead}
-                    alt='shop Head'
-                />
+                <div>
+                    <Image
+                        src={model}
+                        alt='model'
+                        width={470}
+                        height={600}
+                        className='border-2'
+                    />
+                </div>
+                <div className='flex gap-2.5 mt-1.5'>
+                    <div>
+                        <Image 
+                            src={model}
+                            alt='model'
+                            width={150}
+                            height={200}
+                            className='border-2'
+                        />
+                    </div>
+                    <div>
+                        <Image 
+                            src={model}
+                            alt='model'
+                            width={150}
+                            height={200}
+                            className='border-2'
+                        />
+                    </div>
+                    <div>
+                        <Image 
+                            src={model}
+                            alt='model'
+                            width={150}
+                            height={200}
+                            className='border-2'
+                        />
+                    </div>
+                </div>
+                <div>
+                    
+                </div>
             </div>
 
-            <div>
+            {/* <div>
                 <ProductTabs />
-            </div>
+            </div> */}
         </main>
 
         <div>
