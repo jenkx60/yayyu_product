@@ -8,6 +8,8 @@ import shophead from '../public/Frame 23 shopping.svg';
 import model from '../public/model.svg';
 import ProductTabs from '../components/ProductTabs';
 import { FaRegStar, FaStar } from 'react-icons/fa6';
+import SizeTabs from '../components/SizeTabs';
+import ColorTabs from '../components/ColorTabs';
 
 const Shopping = () => {
   return (
@@ -95,12 +97,23 @@ const Shopping = () => {
                 </div>
 
                 <hr className='mt-5'/>
+
+                <div className='mt-5'>
+                    <div className='font-dmSans font-medium text-xl leading-6 mb-3'>
+                        <h1>SIZE</h1>
+                    </div>
+                    <SizeTabs />
+                </div>
+
+                <hr className='mt-5'/>
+
+                <div className='mt-5'>
+                    <div className='font-dmSans font-medium text-xl leading-6 mb-3'>
+                        <h1>COLOURS</h1>
+                    </div>
+                    <ColorTabs />
+                </div>
             </div>
-
-
-            {/* <div>
-                <ProductTabs />
-            </div> */}
         </main>
 
         <div>

@@ -33,6 +33,10 @@ module.exports = {
         coloring: "#FF6464",
         activehover: "#FCBA41",
         smalltextcolor: "#585656",
+        tabred: "#EF4646",
+        tabpurple: "#464BEF",
+        tabyell: "EFB946",
+        tabcyan: "#46CDEF",
       },
       fontFamily: {
         dmSans: ['"DM Sans"', "sans-serif"],
