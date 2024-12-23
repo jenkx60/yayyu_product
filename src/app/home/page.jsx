@@ -176,11 +176,6 @@ const page = () => {
           </div>
         </div>
       </main>
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> 95f0bad (finally got the images to work glory be to God... Amen)
       <Footer />
     </div>
   );
