@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { UseState } from 'react';
 import Carousel from '../components/Carousel';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -10,6 +11,7 @@ import adire from '../public/component 7.svg';
 import kaftan from '../public/component 8.svg';
 import gown from '../public/component 9.svg';
 import Link from 'next/link';
+import Cart from '../components/Cart';
 
 const page = () => {
   const products = [
@@ -153,7 +155,6 @@ const page = () => {
 
       </main>
       
-
       <Footer />
     </div>
   )
