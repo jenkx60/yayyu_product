@@ -80,6 +80,7 @@ The following scripts are available in the `package.json` file:
 
 The project follows a structed folder organization:
 
+```bash
 /yayyu_product
 ├── /public                # Static assets
 ├── /src                   # Source files
@@ -91,6 +92,7 @@ The project follows a structed folder organization:
 ├── .eslintrc.json         # ESLint configuration
 ├── package.json           # Project metadata and dependencies
 └── README.md              # Project documentation
+```
 
 ## Contributing 
 
