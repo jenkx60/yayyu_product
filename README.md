@@ -14,7 +14,6 @@ Welcome to the Yayyu Product repository! This poject is a Next.js application de
 - [Technologies Used](#technologies-used)
 - [Folder Structure](#folder-structure)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
