@@ -19,7 +19,11 @@ const Shopping = () => {
       </div>
 
       <div>
-        <Image src={shophead} alt="shop Head" />
+        <Image 
+          src={shophead} 
+          alt="shop Head"
+          className="w-full" 
+        />
       </div>
 
       <main className="container mt-20 flex">

@@ -60,9 +60,9 @@ const Navbar = () => {
     };
   }, []);
   return (
-    <div>
+    <div className="">
       <nav>
-        <div className=" bg-white w-full h-auto flex justify-between items-center p-5">
+        <div className=" bg-white w-full h-auto flex justify-between items-center p-5 absolute z-50">
           {/* <div className='container '> */}
           {/* Mobile Menu Button */}
           <button
@@ -86,7 +86,7 @@ const Navbar = () => {
                 {dropdownOpen && (
                   <div
                     ref={drop}
-                    className="flex flex-col gap-3 bg-white absolute w-36 p-4 border border-t-activehover border-t-4 shadow-sm top-5 left-0"
+                    className="flex flex-col gap-3 bg-white absolute w-36 p-4 border border-t-activehover border-t-4 shadow-sm top-5 left-0 z-0"
                   >
                     <Link href="/signup">COLLECTION</Link>
                     <Link href="/login">CATEGORY</Link>

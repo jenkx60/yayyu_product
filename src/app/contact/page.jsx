@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import frameContact from '../public/Framecontact.png';
+import frameContact from '../public/image/Framecontact.png';
 import * as yup from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 
@@ -44,6 +44,7 @@ const Contact = () => {
                 <Image 
                     src={frameContact}
                     alt='Contact Image 1'
+                    className='w-full'
                 />
             </div>
 
