@@ -2,8 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import frame23 from '../public/Frame 23.png';
-import frame46 from '../public/Frame 46.png';
+import frame23 from '../public/svg/Frame 23.svg';
+import frame46 from '../public/svg/Frame 46.svg';
 
 const about = () => {
   return (
@@ -16,10 +16,12 @@ const about = () => {
                 <Image 
                     src={frame23}
                     alt='About Image 1'
+                    className='w-full'
                 />
             </div>
 
             <div className='container'>
+                
                 <div className='w-full relative'>
                     <div style={{
                         position: 'relative',

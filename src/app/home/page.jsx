@@ -16,11 +16,11 @@ import Link from "next/link";
 // const adire = require("../public/svg/component7.svg");
 // const kaftan = require("../public/svg/component8.svg");
 // const gown = require("../public/svg/component9.svg");
-{
+
   /* <Image src={image} alt="model" width={300} height={250} />; */
-}
+
 const page = () => {
-  const images = Array(8).fill(model);
+  const images = Array(1).fill(model);
 
   const products = [
     {
@@ -73,7 +73,7 @@ const page = () => {
             </p>
           </div>
 
-          <div className="container font-dmSerifDis font-normal text-2xl italic w-1/2 mt-7 text-black">
+          <div className="container font-dmSerifDis font-normal text-2xl italic w-full mt-7 text-black">
             <h1>
               To provide sustainable clothing for both <br /> formal and
               informal occasions.
@@ -141,7 +141,7 @@ const page = () => {
         <div className="container grid grid-cols-2 w-full gap-3 mb-10">
           <div className="relative">
             <Image src={suit} alt="suit" width={612} height={475} />
-            <div className="absolute bg-black inset-44 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer">
+            <div className="absolute bg-black inset-52 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer">
               <Link href="/shopping">
                 <button>SHOP NOW</button>
               </Link>
@@ -150,7 +150,7 @@ const page = () => {
 
           <div className="relative">
             <Image src={adire} alt="adire" width={612} height={475} />
-            <div className="absolute bg-black inset-44 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer">
+            <div className="absolute bg-black inset-52 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer">
               <Link href="/shopping">
                 <button>SHOP NOW</button>
               </Link>
@@ -159,7 +159,7 @@ const page = () => {
 
           <div className="relative">
             <Image src={kaftan} alt="kaftan" width={612} height={475} />
-            <div className="absolute bg-black inset-44 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer">
+            <div className="absolute bg-black inset-52 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer">
               <Link href="/shopping">
                 <button>SHOP NOW</button>
               </Link>
@@ -168,7 +168,7 @@ const page = () => {
 
           <div className="relative">
             <Image src={gown} alt="gown" width={612} height={475} />
-            <div className="absolute bg-black inset-44 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer">
+            <div className="absolute bg-black inset-52 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer">
               <Link href="/shopping">
                 <button>SHOP NOW</button>
               </Link>
