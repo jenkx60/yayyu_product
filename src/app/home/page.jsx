@@ -61,7 +61,7 @@ const page = () => {
       <Navbar />
 
       <main className="bg-white">
-        <Carousel />
+        <Carousel  />
 
         <div>
           <div className="container flex justify-between text-black font-dmSans">
