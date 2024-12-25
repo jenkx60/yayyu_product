@@ -62,7 +62,7 @@ const Navbar = () => {
   return (
     <div className="">
       <nav>
-        <div className=" bg-white w-full h-auto flex justify-between items-center p-5 absolute z-50">
+        <div className=" bg-white w-full h-auto flex justify-between items-center p-5 ">
           {/* <div className='container '> */}
           {/* Mobile Menu Button */}
           <button
