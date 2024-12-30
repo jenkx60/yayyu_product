@@ -10,24 +10,26 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 const checkout = () => {
 
     const initialValues = {
-        firstName: '',
-        lastName: '',
+        firstname: '',
+        lastname: '',
         email: '',
         phone: '',
         address: '',
+        apartment: '',
         city: '',
-        postalCode: '',
+        state: '',
+        postalcode: '',
     }
 
     const validationSchema = yup.object({
-        firstName: yup
+        firstname: yup
             .string()
             .required('First name is required')
             .min(2, 'First name must be at least 2 characters')
             .max(50, 'First name must not exceed 50 characters')
             .matches(/^[A-Za-z]+$/, 'First name must contain only alphabets'),
 
-        lastName: yup
+        lastname: yup
             .string()
             .required('Last name is required')
             .min(2, 'Last name must be at least 2 characters')
@@ -51,6 +53,12 @@ const checkout = () => {
             .required('Address is required')
             .min(10, 'Address must be at least 10 characters')
             .max(100, 'Address must not exceed 100 characters'),
+
+        apartment: yup
+            .string()
+            .required('Apartment is required')
+            .min(2, 'Apartment must be at least 2 characters')
+            .max(50, 'Apartment must not exceed 50 characters'),
 
         city: yup
             .string()
@@ -88,7 +96,7 @@ const checkout = () => {
             </div>
 
             <div className='container flex'>
-                <div className='w-1/2 pr-4'>
+                <div className='w-1/2 mr-6 mt-32'>
                     {/* delivery details */}
                     <div className='flex justify-between text-black'>
                         <h1 className='font-dmSans font-semibold text-xl leading-9 '>Contact</h1>
@@ -108,15 +116,192 @@ const checkout = () => {
                                             />
                                         </div>
                                     </div>
+
+                                    <div>
+                                        <div>
+                                            <label className='font-dmSans font-medium text-sm leading-5 text-black'>
+                                                <Field 
+                                                    type='checkbox'
+                                                    name='checked'
+                                                    className='mr-1'
+                                                />
+                                                Sign up for order updates, exclusive offers and news on WhatsApp and/or Email
+                                            </label>
+                                            
+                                        </div>
+                                    </div>
                                 </Form>
                             )}
-
                         </Formik>
-                    </div>          
+                    </div> 
+                    <div>
+                        <h1 className='font-dmSans font-semibold text-black text-xl leading-9 mt-7'>Delivery</h1>
+                    </div>
+
+                    <div>
+                        <Formik initialValues={{initialValues}} validationSchema={validationSchema} onSubmit={handleSubmission}>
+                            {() => (
+                                <Form>
+                                    <div>
+                                        <Field
+
+                                        />
+                                    </div>
+
+                                    <div className='flex w-full gap-2 mb-3'>
+                                        <div className='w-1/2'>
+                                            <Field
+                                                type='text'
+                                                name='firstname'
+                                                placeholder='First Name'
+                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                            />
+                                            <ErrorMessage name='firstName' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                        </div>
+
+                                        <div className='w-1/2'>
+                                            <Field
+                                                type='text'
+                                                name='lastname'
+                                                placeholder='Last Name'
+                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm'
+                                            />
+                                            <ErrorMessage name='lastName' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                        </div>
+                                    </div>
+
+                                    <div className='mb-3'>
+                                        <Field
+                                            type='text'
+                                            name='address'
+                                            placeholder='Address'
+                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                        />
+                                        <ErrorMessage name='address' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                    </div>
+
+                                    <div className='mb-3'>
+                                        <Field
+                                            type='text'
+                                            name='apartment'
+                                            placeholder='Apartment'
+                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                        />
+                                        <ErrorMessage name='apartment' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                    </div>
+
+                                    <div className='mb-3'>
+                                        <Field
+                                            type='text'
+                                            name='city'
+                                            placeholder='City'
+                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                        />
+                                        <ErrorMessage name='city' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                    </div>
+
+                                    <div className='flex w-full gap-2 mb-3'>
+                                        <div className='w-1/2'>
+                                            <Field
+                                                type='text'
+                                                name='state'
+                                                placeholder='State'
+                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                            />
+                                            <ErrorMessage name='state' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                        </div>
+                                        <div className='w-1/2'>
+                                            <Field
+                                                type='text'
+                                                name='postalcode'
+                                                placeholder='Postal Code'
+                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                            />
+                                            <ErrorMessage name='postalCode' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                        </div>
+                                    </div>
+
+                                    <div className='mb-3'>
+                                        <Field
+                                            type='text'
+                                            name='phone'
+                                            placeholder='Phone'
+                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                        />
+                                        <ErrorMessage name='phone' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                    </div>
+
+                                    <div>
+                                        <label className='font-dmSans font-medium text-sm leading-5 text-black'>
+                                            <Field 
+                                                type='checkbox'
+                                                name='checked'
+                                                className='mr-1'
+                                            />
+                                            Sign up for order updates, exclusive offers and news on WhatsApp and/or Email
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <h1 className='font-dmSans font-semibold text-black text-xl leading-9 mt-6 mb-3'>Contact</h1>
+                                    </div>
+
+                                    <div className='mb-3'>
+                                        <Field
+                                            type='text'
+                                            name='address'
+                                            placeholder='Enter your shipping address'
+                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                        />
+                                        <ErrorMessage name='address' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                    </div>
+
+                                    <div>
+                                        <h1 className='font-dmSans font-semibold text-black text-xl leading-9 mt-6 mb-3'>Shipping Method</h1>
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            <label className='font-dmSans font-medium text-sm leading-5 text-black'>
+                                                <Field 
+                                                    type='radio'
+                                                    name='checked'
+                                                    className='mr-3 custom-radio'
+                                                />
+                                                Standard (within Lagos 3 - 7 working days)
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <label className='font-dmSans font-medium text-sm leading-5 text-black'>
+                                                <Field 
+                                                    type='radio'
+                                                    name='checked'
+                                                    className='mr-3 custom-radio'
+                                                />
+                                                Standard (within Nigeria 3 - 7 working days)
+                                                </label>
+                                        </div>
+                                        <div>
+                                            <label className='font-dmSans font-medium text-sm leading-5 text-black'>
+                                                <Field 
+                                                    type='radio'
+                                                    name='checked'
+                                                    className='mr-3 custom-radio'
+                                                />
+                                                Standard (Outside Nigeria 3 - 7 working days)
+                                                </label>
+                                        </div>
+
+                                    </div>
+
+                                </Form>
+                            )}
+                        </Formik>
+                    </div>         
                 </div>
-
-                <hr className='border-2 border-black'/>
-
+                
+                <vr className='border border-gray-300'/>
+                
                 <div>
                     <div></div>             {/*shipping total */}
                 </div>
