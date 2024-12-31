@@ -101,12 +101,12 @@ const checkout = () => {
                 <Image 
                     src={checkoutbg}
                     alt="checkout Background"
-                    className='w-full'
+                    className='w-full sm:hidden'
                 />
             </div>
 
-            <div className='container flex'>
-                <div className='w-1/2 mr-6 mt-32'>
+            <div className='container flex sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row'>
+                <div className='w-1/2 mr-6 mt-32 sm:mt-10 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2'>  {/* checkout details */}
                     {/* delivery details */}
                     <div className='flex justify-between text-black'>
                         <h1 className='font-dmSans font-semibold text-xl leading-9 '>Contact</h1>
@@ -132,7 +132,7 @@ const checkout = () => {
                                             <label className='font-dmSans font-medium text-sm leading-5 text-black'>
                                                 <Field 
                                                     type='checkbox'
-                                                    name='checked'
+                                                    name='signupterms'
                                                     className='mr-1'
                                                 />
                                                 Sign up for order updates, exclusive offers and news on WhatsApp and/or Email
@@ -245,11 +245,12 @@ const checkout = () => {
                                         <label className='font-dmSans font-medium text-sm leading-5 text-black'>
                                             <Field 
                                                 type='checkbox'
-                                                name='checked'
-                                                className='mr-1'
+                                                name='signupterms'
+                                                className='mr-1 custom-checkbox'
                                             />
                                             Sign up for order updates, exclusive offers and news on WhatsApp and/or Email
                                         </label>
+                                        <ErrorMessage name='signupterms' component='div' className='text-red-500 text-sm font-dmSans'/>
                                     </div>
 
                                     <div>
@@ -271,7 +272,7 @@ const checkout = () => {
                                     </div>
 
                                     <div>
-                                        <div className='flex justify-between border border-gray-300 p-4'>
+                                        <div className='flex justify-between border border-gray-300 p-4 hover:border-activehover'>
                                             <div>
                                                 <label className='font-dmSans font-medium text-sm leading-5 text-black'>
                                                     <Field 
@@ -288,7 +289,7 @@ const checkout = () => {
                                         </div>
 
                                         <div>
-                                            <div className='flex justify-between border border-gray-300 p-4'>
+                                            <div className='flex justify-between border border-gray-300 p-4 hover:border-activehover'>
                                                 <div>
                                                     <label className='font-dmSans font-medium text-sm leading-5 text-black'>
                                                         <Field 
@@ -306,7 +307,7 @@ const checkout = () => {
                                         </div>
 
                                         <div>
-                                            <div className='flex justify-between border border-gray-300 p-4'>
+                                            <div className='flex justify-between border border-gray-300 p-4 hover:border-activehover'>
                                                 <div>
                                                     <label className='font-dmSans font-medium text-sm leading-5 text-black'>
                                                         <Field 
@@ -322,10 +323,28 @@ const checkout = () => {
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
 
+                                    {/* Payment */}
+                                    <div>
+                                        <h1 className='font-dmSans font-semibold text-black text-xl leading-9 mt-6 mb-2'>Payment</h1>
+                                        <p className='font-dmSans font-medium text-smalltextcolor text-sm leading-5'>All transaction are secure and encrypted</p>
+                                    </div>
+
+                                    {/* Payment form */}
+                                    <div className='bg-paycolor p-4'>
+                                        <div>
+                                            <h1 className='font-dmSans font-semibold text-black text-2xl leading-9'>Credit Card</h1>
+                                            <Field
+                                                type='text'
+                                                name='cardnumber'
+                                                placeholder='Card Number'
+                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                            />
+                                            <ErrorMessage name='cardnumber' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                        </div>
+                                        <div></div>
+                                    </div>
                                 </Form>
                             )}
                         </Formik>

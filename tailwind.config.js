@@ -37,6 +37,7 @@ module.exports = {
         tabpurple: "#464BEF",
         tabyell: "EFB946",
         tabcyan: "#46CDEF",
+        paycolor: "#F7F7F7",
       },
       fontFamily: {
         dmSans: ['"DM Sans"', "sans-serif"],
