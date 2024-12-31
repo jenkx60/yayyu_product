@@ -19,6 +19,8 @@ const checkout = () => {
         city: '',
         state: '',
         postalcode: '',
+        shippingmethod: '',
+        signupterms: '',
     }
 
     const validationSchema = yup.object({
@@ -73,6 +75,14 @@ const checkout = () => {
             .matches(/^[0-9]+$/, 'Postal code must contain only numbers')
             .min(6, 'Postal code must be at least 6 characters')
             .max(6, 'Postal code must not exceed 6 characters'),
+        
+        shippingmethod: yup
+            .string()
+            .required('Shipping method is required'),
+
+        signupterms: yup
+            .boolean()
+            .oneOf([true], 'You must accept the terms and conditions')
 
     });
 
@@ -261,36 +271,58 @@ const checkout = () => {
                                     </div>
 
                                     <div>
-                                        <div>
-                                            <label className='font-dmSans font-medium text-sm leading-5 text-black'>
-                                                <Field 
-                                                    type='radio'
-                                                    name='checked'
-                                                    className='mr-3 custom-radio'
-                                                />
-                                                Standard (within Lagos 3 - 7 working days)
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <label className='font-dmSans font-medium text-sm leading-5 text-black'>
-                                                <Field 
-                                                    type='radio'
-                                                    name='checked'
-                                                    className='mr-3 custom-radio'
-                                                />
-                                                Standard (within Nigeria 3 - 7 working days)
+                                        <div className='flex justify-between border border-gray-300 p-4'>
+                                            <div>
+                                                <label className='font-dmSans font-medium text-sm leading-5 text-black'>
+                                                    <Field 
+                                                        type='radio'
+                                                        name='shippingmethod'
+                                                        className='mr-3 custom-radio'
+                                                    />
+                                                    Standard (within Lagos 3 - 7 working days)
                                                 </label>
+                                            </div>
+                                            <div className='font-dmSans font-medium text-lg leading-5 text-black'>
+                                                <p>₦5,000</p>
+                                            </div>
                                         </div>
+
                                         <div>
-                                            <label className='font-dmSans font-medium text-sm leading-5 text-black'>
-                                                <Field 
-                                                    type='radio'
-                                                    name='checked'
-                                                    className='mr-3 custom-radio'
-                                                />
-                                                Standard (Outside Nigeria 3 - 7 working days)
-                                                </label>
+                                            <div className='flex justify-between border border-gray-300 p-4'>
+                                                <div>
+                                                    <label className='font-dmSans font-medium text-sm leading-5 text-black'>
+                                                        <Field 
+                                                            type='radio'
+                                                            name='shippingmethod'
+                                                            className='mr-3 custom-radio'
+                                                        />
+                                                        Standard (within Nigeria 3 - 7 working days)
+                                                    </label>
+                                                </div>
+                                                <div className='font-dmSans font-medium text-lg leading-5 text-black'>
+                                                    <p>₦10,000</p>
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <div>
+                                            <div className='flex justify-between border border-gray-300 p-4'>
+                                                <div>
+                                                    <label className='font-dmSans font-medium text-sm leading-5 text-black'>
+                                                        <Field 
+                                                            type='radio'
+                                                            name='shippingmethod'
+                                                            className='mr-3 custom-radio'
+                                                        />
+                                                        Standard (Outside Nigeria 3 - 7 working days)
+                                                    </label>
+                                                </div>
+                                                <div className='font-dmSans font-medium text-lg leading-5 text-black'>
+                                                    <p>₦15,000</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
 
                                     </div>
 
