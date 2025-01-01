@@ -2,6 +2,11 @@
 import React from 'react';
 import Image from 'next/image';
 import checkoutbg from '../public/svg/Frame 23 checkout.svg';
+import amex from '../public/svg/american-express.svg';
+import mastercard from '../public/svg/mastercard.svg';
+import visa from '../public/svg/visa.svg';
+import union from '../public/svg/unionpay.svg';
+import verve from '../public/svg/Group.svg';
 import Navbar from '../components/Navbar';
 import { Link } from 'next/link';
 import * as yup from 'yup';
@@ -21,6 +26,10 @@ const checkout = () => {
         postalcode: '',
         shippingmethod: '',
         signupterms: '',
+        cardnumber: '',
+        cardexpiry: '',
+        cvv: '',
+        cardholdername: '',
     }
 
     const validationSchema = yup.object({
@@ -82,7 +91,35 @@ const checkout = () => {
 
         signupterms: yup
             .boolean()
-            .oneOf([true], 'You must accept the terms and conditions')
+            .oneOf([true], 'You must accept the terms and conditions'),
+
+        cardnumber: yup
+            .string()
+            .required('Card number is required')
+            .matches(/^[0-9]+$/, 'Card number must contain only numbers')
+            .min(16, 'Card number must be at least 16 characters')
+            .max(16, 'Card number must not exceed 16 characters'),
+
+        cardexpiry: yup
+            .string()
+            .required('Card expiry is required')
+            .matches(/^[0-9]+$/, 'Card expiry must contain only numbers')
+            .min(4, 'Card expiry must be at least 4 characters')
+            .max(4, 'Card expiry must not exceed 4 characters'),
+
+        cvv: yup
+            .string()
+            .required('CVV is required')
+            .matches(/^[0-9]+$/, 'CVV must contain only numbers')
+            .min(3, 'CVV must be at least 3 characters')
+            .max(3, 'CVV must not exceed 3 characters'),
+
+        cardholdername: yup
+            .string()
+            .required('Card holder name is required')
+            .min(2, 'Card holder name must be at least 2 characters')
+            .max(50, 'Card holder name must not exceed 50 characters')
+            .matches(/^[A-Za-z]+$/, 'Card holder name must contain only alphabets'),
 
     });
 
@@ -97,11 +134,11 @@ const checkout = () => {
         </nav>
 
         <main>
-            <div>
+            <div className=''>
                 <Image 
                     src={checkoutbg}
                     alt="checkout Background"
-                    className='w-full sm:hidden'
+                    className='w-full'
                 />
             </div>
 
@@ -332,18 +369,69 @@ const checkout = () => {
                                     </div>
 
                                     {/* Payment form */}
-                                    <div className='bg-paycolor p-4'>
-                                        <div>
-                                            <h1 className='font-dmSans font-semibold text-black text-2xl leading-9'>Credit Card</h1>
-                                            <Field
-                                                type='text'
-                                                name='cardnumber'
-                                                placeholder='Card Number'
-                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
-                                            />
-                                            <ErrorMessage name='cardnumber' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                    <div className='bg-paycolor p-4 w-full'>
+                                        <div className='bg-red-300 border border-activehover p-4 flex justify-between w-full'>
+                                            <div>
+                                                <p className='font-dmSans font-semibold text-smalltextcolor text-sm leading-6'>Credit Card</p>
+                                            </div>
+
+                                            <div className='flex'>
+                                                <div>
+                                                    <Image
+                                                        src={verve}
+                                                        alt='Verve'
+                                                        // width={5}
+                                                        // height={5}
+                                                        className='bg-blue-950 w-8 h-5' 
+                                                    />
+                                                </div>
+                                            
+                                                <div>
+                                                    <Image
+                                                        src={mastercard}
+                                                        alt='Mastercard'
+                                                        // width={5}
+                                                        // height={5}
+                                                        className='w-8 h-5'  
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Image
+                                                        src={visa}
+                                                        alt='Visa'
+                                                        // width={5}
+                                                        // height={5}
+                                                        className='w-8 h-5'  
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Image
+                                                        src={union}
+                                                        alt='Union Pay'
+                                                        // width={5}
+                                                        // height={5}
+                                                        className='w-8 h-5' 
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Image
+                                                        src={amex}
+                                                        alt='American Express'
+                                                        // width={5}
+                                                        // height={5}
+                                                        className='w-8 h-5'  
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div></div>
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            <Field
+                                                name='cardNumber'
+                                            />
+                                        </div>
                                     </div>
                                 </Form>
                             )}
