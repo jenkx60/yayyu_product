@@ -34,6 +34,7 @@ const checkout = () => {
         cardexpiry: '',
         cvv: '',
         cardholdername: '',
+        discount: '',
     }
 
     const validationSchema = yup.object({
@@ -125,6 +126,11 @@ const checkout = () => {
             .max(50, 'Card holder name must not exceed 50 characters')
             .matches(/^[A-Za-z]+$/, 'Card holder name must contain only alphabets'),
 
+        discount: yup
+            .string()
+            .matches(/^[0-9]+$/, 'Discount must contain only numbers')
+            .min(2, 'Discount must be at least 2 characters')
+            .max(50, 'Discount must not exceed 50 characters'),
     });
 
     const handleSubmission = (values) => {
@@ -154,9 +160,9 @@ const checkout = () => {
             const { id, name, image, price, number } = item;
             return (
                 // <div >
-                    <li key={id} className='text-black flex'>
+                    <li key={id} className='text-black flex font-dmSans'>
                         {images.map((img, index) => (
-                            <div key={index} className='relative'>
+                            <div key={index} className='relative w-20 h-20'>
                                 <Image
                                     src={img}
                                     alt={`Images of ${index + 1}`}
@@ -169,11 +175,13 @@ const checkout = () => {
                                 </div>
                             </div>
                         ))}
-                        <div>
-                            <h3>{name}</h3>
-                        </div>
-                        <div>
-                            <p>₦{price.toLocaleString()}.00</p>
+                        <div className='flex gap-24 w-full place-items-center'>
+                            <div className='w-1/2 font-dmSans font-medium text-sm leading-5 pl-3'>
+                                <h3>{name}</h3>
+                            </div>
+                            <div className='w-1/2 font-dmSans font-normal text-xl leading-6'>
+                                <p>₦{price.toLocaleString()}.00</p>
+                            </div>
                         </div>
                     </li>
                 // </div>
@@ -209,7 +217,8 @@ const checkout = () => {
             </div>
 
             <div className='container flex sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row'>
-                <div className='w-1/2 mr-6 my-32 sm:mt-10 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2'>  {/* checkout details */}
+                {/* checkout details */}
+                <div className='w-1/2 mr-10 my-32 sm:mt-10 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2'>  
                     {/* delivery details */}
                     <div className='flex justify-between text-black'>
                         <h1 className='font-dmSans font-semibold text-xl leading-9 '>Contact</h1>
@@ -227,6 +236,7 @@ const checkout = () => {
                                                 placeholder='Email'
                                                 className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
                                             />
+                                            <ErrorMessage name='email' component='div' className='text-red-500 text-sm font-dmSans'/>
                                         </div>
                                     </div>
 
@@ -561,28 +571,53 @@ const checkout = () => {
                 
                 <vr className='border border-gray-300'/>
                 
-                <div className='w-1/2 mr-6 my-32 sm:mt-10 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2'>  {/* order summary */}
+                {/* order summary */}
+                <div className='w-1/2 my-32 sm:mt-10 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2'>  
                     <div className='container'>
-                        <div>
+                        <div >
                             <ul>
                                 {orderItems()}
                             </ul>
                         </div>
                     </div>   
 
+                    <div className='container my-8'>
+                        <Formik initialValues={{initialValues}} validationSchema={validationSchema} onSubmit={handleSubmission}>
+                            {() => (
+                                <Form>
+                                    <div className='flex text-black'>
+                                        <div className='w-full'>
+                                            <Field
+                                                type='text'
+                                                name='discount'
+                                                placeholder='Discount Code or Gift Card'
+                                                className='block w-80 border-0 px-3.5 py-4 bg-gray-100 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm placeholder:font-medium focus:ring-2 focus:ring-inset focus:ring-coloring rounded-md sm:text-sm'
+                                            />
+                                            <ErrorMessage name='discount' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                        </div>
+
+                                        <div className='w-1/4 bg-gray-200 hover:bg-gray-400 flex place-items-center justify-center cursor-pointer rounded-md'>
+                                            <button className='font-dmSans font-medium text-sm leading-5 text-gray-500 '>Apply</button>
+                                        </div>
+                                    </div>
+                                </Form>
+                            )}
+                        </Formik>
+                    </div>
+
                     {/* Display Total */}
-                    <div>
-                        <div>
-                            <p>Subtotal</p>
-                            <p>₦{subtotal.toLocaleString()}.00</p>
+                    <div className='container font-dmSans '>
+                        <div className='flex justify-between text-black mb-3 '>
+                            <p className='font-medium text-sm leading-5'>Subtotal</p>
+                            <p className='font-normal text-xl leading-5'>₦{subtotal.toLocaleString()}.00</p>
                         </div>
-                        <div>
-                            <p>Shipping</p>
-                            <p>₦{shippingCosts.toLocaleString()}.00</p>
+                        <div className='flex justify-between text-black mb-6'>
+                            <p className='font-medium text-sm leading-5'>Shipping</p>
+                            <p className='font-normal text-xl leading-5'>₦{shippingCosts.toLocaleString()}.00</p>
                         </div>
-                        <div>
-                            <p>Total</p>
-                            <p>₦{total.toLocaleString()}.00</p>
+                        <div className='flex justify-between text-black'>
+                            <p className='font-medium text-sm leading-5'><strong>Total</strong></p>
+                            <p className='font-normal text-xl leading-5'>₦{total.toLocaleString()}.00</p>
                         </div>
                     </div>
                 </div>
