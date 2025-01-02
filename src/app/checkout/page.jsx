@@ -1,5 +1,6 @@
-"use client"
+"use client";
 import React from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import checkoutbg from '../public/svg/Frame 23 checkout.svg';
 import amex from '../public/svg/american-express.svg';
@@ -7,10 +8,13 @@ import mastercard from '../public/svg/mastercard.svg';
 import visa from '../public/svg/visa.svg';
 import union from '../public/svg/unionpay.svg';
 import verve from '../public/svg/Group.svg';
+import model from '../public/svg/model.svg';
 import Navbar from '../components/Navbar';
 import { Link } from 'next/link';
 import * as yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Footer from '../components/Footer';
+import OrderSummary from '../components/OrderSummary';
 
 const checkout = () => {
 
@@ -125,7 +129,69 @@ const checkout = () => {
 
     const handleSubmission = (values) => {
         alert('Form Submitted Successfully', values);
-    }
+    };
+
+    const images = Array(1).fill(model);
+    const order = [
+        {
+            id: 1,
+            image: model.src,
+            name: 'The Adire Attire with colour variaties',
+            price: 150000.0,
+            number: 1,
+        },
+        {
+            id: 2,
+            image: model.src,
+            name: 'The Adire Attire with colour variaties',
+            price: 150000.0,
+            number: 1,
+        },
+    ];
+
+    const orderItems = () => {
+        return order.map((item) => {
+            const { id, name, image, price, number } = item;
+            return (
+                // <div >
+                    <li key={id} className='text-black flex'>
+                        {images.map((img, index) => (
+                            <div key={index} className='relative'>
+                                <Image
+                                    src={img}
+                                    alt={`Images of ${index + 1}`}
+                                    width={70}
+                                    height={80}
+                                    className='border border-gray-300 rounded-lg'
+                                />
+                                <div className='text-white bg-gray-500 rounded-full w-3 p-1 flex place-items-center font-dmSans text-sm leading-6 absolute top-0 right-0'>
+                                    <p className=''>{number}</p>
+                                </div>
+                            </div>
+                        ))}
+                        <div>
+                            <h3>{name}</h3>
+                        </div>
+                        <div>
+                            <p>₦{price.toLocaleString()}.00</p>
+                        </div>
+                    </li>
+                // </div>
+            );
+        });
+    };
+
+    const [ shippingCosts, setShippingCost ] = useState(0);
+
+    // Calculate Subtotal
+    const subtotal = order.reduce((acc, item) => acc + item.price, 0);
+
+    // Calculate Shipping Cost
+    const shippingCost = 0;
+
+    // Calculate Total
+    const total = subtotal + shippingCosts;
+
 
   return (
     <div className='bg-white'>
@@ -143,7 +209,7 @@ const checkout = () => {
             </div>
 
             <div className='container flex sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row'>
-                <div className='w-1/2 mr-6 mt-32 sm:mt-10 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2'>  {/* checkout details */}
+                <div className='w-1/2 mr-6 my-32 sm:mt-10 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2'>  {/* checkout details */}
                     {/* delivery details */}
                     <div className='flex justify-between text-black'>
                         <h1 className='font-dmSans font-semibold text-xl leading-9 '>Contact</h1>
@@ -308,6 +374,7 @@ const checkout = () => {
                                         <h1 className='font-dmSans font-semibold text-black text-xl leading-9 mt-6 mb-3'>Shipping Method</h1>
                                     </div>
 
+                                    {/* Shipping Method */}
                                     <div>
                                         <div className='flex justify-between border border-gray-300 p-4 hover:border-activehover'>
                                             <div>
@@ -315,6 +382,8 @@ const checkout = () => {
                                                     <Field 
                                                         type='radio'
                                                         name='shippingmethod'
+                                                        value='5000'
+                                                        onChange={(e) => setShippingCost(parseInt(e.target.value))}
                                                         className='mr-3 custom-radio'
                                                     />
                                                     Standard (within Lagos 3 - 7 working days)
@@ -332,6 +401,8 @@ const checkout = () => {
                                                         <Field 
                                                             type='radio'
                                                             name='shippingmethod'
+                                                            value='10000'
+                                                            onChange={(e) => setShippingCost(parseInt(e.target.value))}
                                                             className='mr-3 custom-radio'
                                                         />
                                                         Standard (within Nigeria 3 - 7 working days)
@@ -350,6 +421,8 @@ const checkout = () => {
                                                         <Field 
                                                             type='radio'
                                                             name='shippingmethod'
+                                                            value='15000'
+                                                            onChange={(e) => setShippingCost(parseInt(e.target.value))}
                                                             className='mr-3 custom-radio'
                                                         />
                                                         Standard (Outside Nigeria 3 - 7 working days)
@@ -369,69 +442,116 @@ const checkout = () => {
                                     </div>
 
                                     {/* Payment form */}
-                                    <div className='bg-paycolor p-4 w-full'>
-                                        <div className='bg-red-300 border border-activehover p-4 flex justify-between w-full'>
-                                            <div>
-                                                <p className='font-dmSans font-semibold text-smalltextcolor text-sm leading-6'>Credit Card</p>
-                                            </div>
+                                    <div className='bg-paycolor border border-activehover p-4 flex justify-between w-full'>
+                                        <div>
+                                            <p className='font-dmSans font-semibold text-smalltextcolor text-sm leading-6'>Credit Card</p>
+                                        </div>
 
-                                            <div className='flex'>
-                                                <div>
-                                                    <Image
-                                                        src={verve}
-                                                        alt='Verve'
-                                                        // width={5}
-                                                        // height={5}
-                                                        className='bg-blue-950 w-8 h-5' 
-                                                    />
-                                                </div>
+                                        <div className='flex'>
+                                            <div>
+                                                <Image
+                                                    src={verve}
+                                                    alt='Verve'
+                                                    // width={5}
+                                                    // height={5}
+                                                    className='bg-blue-950 w-8 h-5' 
+                                                />
+                                            </div>
                                             
-                                                <div>
-                                                    <Image
-                                                        src={mastercard}
-                                                        alt='Mastercard'
-                                                        // width={5}
-                                                        // height={5}
-                                                        className='w-8 h-5'  
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Image
-                                                        src={visa}
-                                                        alt='Visa'
-                                                        // width={5}
-                                                        // height={5}
-                                                        className='w-8 h-5'  
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Image
-                                                        src={union}
-                                                        alt='Union Pay'
-                                                        // width={5}
-                                                        // height={5}
-                                                        className='w-8 h-5' 
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Image
-                                                        src={amex}
-                                                        alt='American Express'
-                                                        // width={5}
-                                                        // height={5}
-                                                        className='w-8 h-5'  
-                                                    />
-                                                </div>
+                                            <div>
+                                                <Image
+                                                    src={mastercard}
+                                                    alt='Mastercard'
+                                                    // width={5}
+                                                    // height={5}
+                                                    className='w-8 h-5'  
+                                                />
+                                            </div>
+                                            <div>
+                                                <Image
+                                                    src={visa}
+                                                    alt='Visa'
+                                                    // width={5}
+                                                    // height={5}
+                                                    className='w-8 h-5'  
+                                                />
+                                            </div>
+                                            <div>
+                                                <Image
+                                                    src={union}
+                                                    alt='Union Pay'
+                                                    // width={5}
+                                                    // height={5}
+                                                    className='w-8 h-5' 
+                                                />
+                                            </div>
+                                            <div>
+                                                <Image
+                                                    src={amex}
+                                                    alt='American Express'
+                                                    // width={5}
+                                                    // height={5}
+                                                    className='w-8 h-5'  
+                                                />
                                             </div>
                                         </div>
                                     </div>
+                                    <div className='bg-paycolor border p-4'>
+                                            <div>
+                                                <Field
+                                                    type='text'                                           
+                                                    name='cardNumber'
+                                                    placeholder='Card Number'
+                                                    className='block w-full bg-transparent mb-3 rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm'
+                                                />
+                                                <ErrorMessage name='cardNumber' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                            </div>
+
+                                            <div className='w-full flex gap-2'>
+                                                <div className='w-1/2'>
+                                                    <Field
+                                                        type='text'
+                                                        name='cardexpiry'
+                                                        placeholder='Expiration Date (MM/YY)'
+                                                        className='block w-full bg-transparent mb-3 rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm'
+                                                    />
+                                                    <ErrorMessage name='cardexpiry' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                                </div>
+                                                <div className='w-1/2'>
+                                                    <Field
+                                                        type='text'
+                                                        name='cvv'
+                                                        placeholder='Security Code (CVV)'
+                                                        className='block w-full bg-transparent mb-3 rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                                    />
+                                                    <ErrorMessage name='cvv' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <Field
+                                                    type='text'
+                                                    name='cardholdername'
+                                                    placeholder='Name On Card'
+                                                    className='block w-full bg-transparent rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                                />
+                                            </div>
+                                    </div>
+
+                                    <div className='my-5'>
+                                        <label className='font-dmSans font-medium text-sm leading-5 text-black'>
+                                            <Field 
+                                                type='checkbox'
+                                                name='signupterms'
+                                                className='mr-1 custom-checkbox'
+                                            />
+                                            Use shipping address as billing address
+                                        </label>
+                                        <ErrorMessage name='signupterms' component='div' className='text-red-500 text-sm font-dmSans'/>
+                                    </div>
 
                                     <div>
-                                        <div>
-                                            <Field
-                                                name='cardNumber'
-                                            />
-                                        </div>
+                                        <button className='bg-black text-white w-full text-center text-2xl font-dmSans font-medium py-4 hover:bg-activehover rounded-md'>PAY</button>
                                     </div>
                                 </Form>
                             )}
@@ -441,15 +561,38 @@ const checkout = () => {
                 
                 <vr className='border border-gray-300'/>
                 
-                <div>
-                    <div></div>             {/*shipping total */}
+                <div className='w-1/2 mr-6 my-32 sm:mt-10 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2'>  {/* order summary */}
+                    <div className='container'>
+                        <div>
+                            <ul>
+                                {orderItems()}
+                            </ul>
+                        </div>
+                    </div>   
+
+                    {/* Display Total */}
+                    <div>
+                        <div>
+                            <p>Subtotal</p>
+                            <p>₦{subtotal.toLocaleString()}.00</p>
+                        </div>
+                        <div>
+                            <p>Shipping</p>
+                            <p>₦{shippingCosts.toLocaleString()}.00</p>
+                        </div>
+                        <div>
+                            <p>Total</p>
+                            <p>₦{total.toLocaleString()}.00</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </main>
 
 
-        
+        <footer>
+            <Footer />
+        </footer>
 
     </div>
   )

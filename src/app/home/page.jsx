@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Carousel from "../components/Carousel";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -10,6 +10,7 @@ import adire from "../public/svg/component7.svg";
 import kaftan from "../public/svg/component8.svg";
 import gown from "../public/svg/component9.svg";
 import Link from "next/link";
+// import { CartContext } from "../context/CartContext";
 
 // const model = require("../public/svg/model.svg");
 // const suit = require("../public/svg/component6.svg");
@@ -19,7 +20,8 @@ import Link from "next/link";
 
   /* <Image src={image} alt="model" width={300} height={250} />; */
 
-const page = () => {
+const Home = () => {
+//   const { addToCart } = useContext(CartContext)
   const images = Array(1).fill(model);
 
   const products = [
@@ -30,6 +32,10 @@ const page = () => {
       price: 150000.0,
     },
   ];
+
+//   const handleAddToCart = (product) => {
+//     addToCart(product);
+//   }
 
   const productItems = () => {
     return products.map((item) => {
@@ -52,6 +58,7 @@ const page = () => {
           <p className="flex justify-center font-dmSerifDis text-xl leading-6">
             ₦{price.toLocaleString()}.00
           </p>
+          {/* <button className="bg-black text-white px-4 py-2 mt-2 flex justify-center">Add to Cart</button> */}
         </li>
       );
     });
@@ -181,4 +188,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Home;

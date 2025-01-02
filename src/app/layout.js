@@ -2,6 +2,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+// import { CartProvider } from "./context/CartContext";
+// import { Component } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,6 +35,27 @@ export default function RootLayout({ children }) {
           <Footer />
         </footer> */}
       </body>
+      {/* <CartProvider>
+        <Component {...pageProps} />
+      </CartProvider> */}
     </html>
   );
 }
+
+
+// import '../app/globals.css';
+// import Navbar from './components/Navbar';
+// import { CartProvider } from './context/CartContext';
+// import Home from './home/page';
+
+// export default function RootLayout({ children }) {
+//   return (
+//     <html lang="en">
+//       <body>
+//         <CartProvider>
+//           <Home />
+//         </CartProvider>
+//       </body>
+//     </html>
+//   );
+// }
