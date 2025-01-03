@@ -19,6 +19,7 @@ import OrderSummary from '../components/OrderSummary';
 const checkout = () => {
 
     const initialValues = {
+        country: '',
         firstname: '',
         lastname: '',
         email: '',
@@ -38,6 +39,10 @@ const checkout = () => {
     }
 
     const validationSchema = yup.object({
+        country: yup
+            .string()
+            .required('Country is required'),
+        
         firstname: yup
             .string()
             .required('First name is required')
@@ -137,6 +142,20 @@ const checkout = () => {
         alert('Form Submitted Successfully', values);
     };
 
+    const countryOptions = [
+        { value: 'Nigeria', place: 'Nigeria' },
+        { value: 'USA', place: 'USA' },
+        { value: 'Canada', place: 'Canada' },
+        { value: 'UK', place: 'UK' },
+        { value: 'Australia', place: 'Australia' },
+        { value: 'Ghana', place: 'Ghana' },
+        { value: 'South Africa', place: 'South Africa' },
+        { value: 'India', place: 'India' },
+        { value: 'China', place: 'China' },
+        { value: 'Japan', place: 'Japan' },
+        { value: 'Brazil', place: 'Brazil' },
+    ]
+
     const images = Array(1).fill(model);
     const order = [
         {
@@ -162,7 +181,7 @@ const checkout = () => {
                 // <div >
                     <li key={id} className='text-black flex font-dmSans'>
                         {images.map((img, index) => (
-                            <div key={index} className='relative w-20 h-20'>
+                            <div key={index} className='relative mb-3'>
                                 <Image
                                     src={img}
                                     alt={`Images of ${index + 1}`}
@@ -170,16 +189,16 @@ const checkout = () => {
                                     height={80}
                                     className='border border-gray-300 rounded-lg'
                                 />
-                                <div className='text-white bg-gray-500 rounded-full w-3 p-1 flex place-items-center font-dmSans text-sm leading-6 absolute top-0 right-0'>
-                                    <p className=''>{number}</p>
+                                <div className='text-white bg-gray-500 rounded-full h-5 p-1 flex place-items-center font-dmSans text-sm leading-6 absolute -top-2 -right-2'>
+                                    <p className='p-1'>{number}</p>
                                 </div>
                             </div>
                         ))}
-                        <div className='flex gap-24 w-full place-items-center'>
-                            <div className='w-1/2 font-dmSans font-medium text-sm leading-5 pl-3'>
+                        <div className='flex gap-20 w-full place-items-center justify-between'>
+                            <div className=' w-full text-news font-dmSans font-medium text-xs leading-4 pb-4 pl-3 pr-6 mr-10'>
                                 <h3>{name}</h3>
                             </div>
-                            <div className='w-1/2 font-dmSans font-normal text-xl leading-6'>
+                            <div className=' w-full font-dmSans font-normal text-xl leading-6 pb-4'>
                                 <p>₦{price.toLocaleString()}.00</p>
                             </div>
                         </div>
@@ -232,9 +251,9 @@ const checkout = () => {
                                         <div>
                                             <Field
                                                 type='text'
-                                                name='enail'
+                                                name='email'
                                                 placeholder='Email'
-                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm' 
                                             />
                                             <ErrorMessage name='email' component='div' className='text-red-500 text-sm font-dmSans'/>
                                         </div>
@@ -262,13 +281,23 @@ const checkout = () => {
                     </div>
 
                     <div>
-                        <Formik initialValues={{initialValues}} validationSchema={validationSchema} onSubmit={handleSubmission}>
+                        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmission}>
                             {() => (
                                 <Form>
-                                    <div>
+                                    <div className='mb-3'>
+                                        <label className='font-dmSans font-medium text-sm leading-5 text-black'>Country/Region</label>
                                         <Field
-
-                                        />
+                                            name='country'
+                                            as='select'
+                                            className='block w-full border-0 px-3.5 py-4 bg-transparent text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm'
+                                        >
+                                            <option value='Nigeria' >Nigeria</option>
+                                            {countryOptions.map((option) => (
+                                                <option key={option.value} value={option.value}>
+                                                    {option.place}
+                                                </option>
+                                            ))}
+                                        </Field>
                                     </div>
 
                                     <div className='flex w-full gap-2 mb-3'>
@@ -277,7 +306,7 @@ const checkout = () => {
                                                 type='text'
                                                 name='firstname'
                                                 placeholder='First Name'
-                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm' 
                                             />
                                             <ErrorMessage name='firstName' component='div' className='text-red-500 text-sm font-dmSans'/>
                                         </div>
@@ -287,7 +316,7 @@ const checkout = () => {
                                                 type='text'
                                                 name='lastname'
                                                 placeholder='Last Name'
-                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm'
+                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm'
                                             />
                                             <ErrorMessage name='lastName' component='div' className='text-red-500 text-sm font-dmSans'/>
                                         </div>
@@ -298,7 +327,7 @@ const checkout = () => {
                                             type='text'
                                             name='address'
                                             placeholder='Address'
-                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm' 
                                         />
                                         <ErrorMessage name='address' component='div' className='text-red-500 text-sm font-dmSans'/>
                                     </div>
@@ -308,7 +337,7 @@ const checkout = () => {
                                             type='text'
                                             name='apartment'
                                             placeholder='Apartment'
-                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm' 
                                         />
                                         <ErrorMessage name='apartment' component='div' className='text-red-500 text-sm font-dmSans'/>
                                     </div>
@@ -318,7 +347,7 @@ const checkout = () => {
                                             type='text'
                                             name='city'
                                             placeholder='City'
-                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm' 
                                         />
                                         <ErrorMessage name='city' component='div' className='text-red-500 text-sm font-dmSans'/>
                                     </div>
@@ -329,7 +358,7 @@ const checkout = () => {
                                                 type='text'
                                                 name='state'
                                                 placeholder='State'
-                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm' 
                                             />
                                             <ErrorMessage name='state' component='div' className='text-red-500 text-sm font-dmSans'/>
                                         </div>
@@ -338,7 +367,7 @@ const checkout = () => {
                                                 type='text'
                                                 name='postalcode'
                                                 placeholder='Postal Code'
-                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                                className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm' 
                                             />
                                             <ErrorMessage name='postalCode' component='div' className='text-red-500 text-sm font-dmSans'/>
                                         </div>
@@ -349,7 +378,7 @@ const checkout = () => {
                                             type='text'
                                             name='phone'
                                             placeholder='Phone'
-                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm' 
                                         />
                                         <ErrorMessage name='phone' component='div' className='text-red-500 text-sm font-dmSans'/>
                                     </div>
@@ -375,7 +404,7 @@ const checkout = () => {
                                             type='text'
                                             name='address'
                                             placeholder='Enter your shipping address'
-                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                            className='block w-full border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm' 
                                         />
                                         <ErrorMessage name='address' component='div' className='text-red-500 text-sm font-dmSans'/>
                                     </div>
@@ -512,7 +541,7 @@ const checkout = () => {
                                                     type='text'                                           
                                                     name='cardNumber'
                                                     placeholder='Card Number'
-                                                    className='block w-full bg-transparent mb-3 rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm'
+                                                    className='block w-full bg-transparent mb-3 rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover sm:text-sm'
                                                 />
                                                 <ErrorMessage name='cardNumber' component='div' className='text-red-500 text-sm font-dmSans'/>
                                             </div>
@@ -523,7 +552,7 @@ const checkout = () => {
                                                         type='text'
                                                         name='cardexpiry'
                                                         placeholder='Expiration Date (MM/YY)'
-                                                        className='block w-full bg-transparent mb-3 rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm'
+                                                        className='block w-full bg-transparent mb-3 rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover sm:text-sm'
                                                     />
                                                     <ErrorMessage name='cardexpiry' component='div' className='text-red-500 text-sm font-dmSans'/>
                                                 </div>
@@ -532,7 +561,7 @@ const checkout = () => {
                                                         type='text'
                                                         name='cvv'
                                                         placeholder='Security Code (CVV)'
-                                                        className='block w-full bg-transparent mb-3 rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                                        className='block w-full bg-transparent mb-3 rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover sm:text-sm' 
                                                     />
                                                     <ErrorMessage name='cvv' component='div' className='text-red-500 text-sm font-dmSans'/>
                                                 </div>
@@ -543,7 +572,7 @@ const checkout = () => {
                                                     type='text'
                                                     name='cardholdername'
                                                     placeholder='Name On Card'
-                                                    className='block w-full bg-transparent rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-coloring sm:text-sm' 
+                                                    className='block w-full bg-transparent rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm focus:ring-2 focus:ring-inset focus:ring-activehover sm:text-sm' 
                                                 />
                                             </div>
                                     </div>
@@ -573,7 +602,7 @@ const checkout = () => {
                 
                 {/* order summary */}
                 <div className='w-1/2 my-32 sm:mt-10 sm:w-full md:w-full lg:w-1/2 xl:w-1/2 2xl:w-1/2'>  
-                    <div className='container'>
+                    <div className=' container flex justify-between text-black'>
                         <div >
                             <ul>
                                 {orderItems()}
@@ -591,7 +620,7 @@ const checkout = () => {
                                                 type='text'
                                                 name='discount'
                                                 placeholder='Discount Code or Gift Card'
-                                                className='block w-80 border-0 px-3.5 py-4 bg-gray-100 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm placeholder:font-medium focus:ring-2 focus:ring-inset focus:ring-coloring rounded-md sm:text-sm'
+                                                className='block w-80 border-0 px-3.5 py-4 bg-gray-100 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:font-dmSans placeholder:text-sm placeholder:font-medium focus:ring-2 focus:ring-inset focus:ring-activehover rounded-md sm:text-sm'
                                             />
                                             <ErrorMessage name='discount' component='div' className='text-red-500 text-sm font-dmSans'/>
                                         </div>
