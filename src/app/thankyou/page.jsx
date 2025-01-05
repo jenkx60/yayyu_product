@@ -1,9 +1,48 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import Link from 'next/link'
+import React from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import Link from 'next/link';
+import Image from 'next/image';
+import model from '../public/svg/model.svg';
 
 const page = () => {
+
+  const products = [
+    {
+      id: 1,
+      image: model.src,
+      name: "THE ADIRE ATTIRE",
+      price: 150000.0,
+    },
+  ];
+
+  const images = Array(1).fill(model);
+
+  const bestSeller = () => {
+    return products.map((item) => {
+      const { id, name, image, price } = item;
+      return (
+        <li key={id} className="text-black">
+          {images.map((img, index) => (
+            <div key={index}>
+              <Image
+                src={img}
+                alt={`Images of ${index + 1}`}
+                width={300}
+                height={250}
+              />
+            </div>
+          ))}
+          <h3 className="flex justify-center font-dmSans text-sm leading-4 mt-4">
+            {name}
+          </h3>
+          <p className="flex justify-center font-dmSerifDis text-xl leading-6">
+            ₦{price.toLocaleString()}.00
+          </p>
+        </li>
+      )
+    })
+  }
   return (
     <div className='bg-white'>
       <nav className='shadow-lg mb-10'>
@@ -37,6 +76,15 @@ const page = () => {
               <p className='font-dmSans text-base leading-6'>See all</p>
             </Link>
           </div>
+        </div>
+
+        <div>
+          <ul className='flex mt-7'>
+            {bestSeller()}
+            {bestSeller()}
+            {bestSeller()}
+            {bestSeller()}
+          </ul>
         </div>
 
       </main>
