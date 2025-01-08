@@ -33,7 +33,7 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
+  
   const toggleDropdown = () => {
     setDropdownOpen((dropdownOpen) => !dropdownOpen);
   };
