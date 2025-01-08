@@ -70,3 +70,26 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 } */
+
+.slider-track {
+  background: #000;
+  height: 4px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.slider-thumb {
+  background: #171717;
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+
+.slider-thumb:active {
+  background: #FCBA41;
+}
