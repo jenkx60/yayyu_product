@@ -39,7 +39,7 @@ const Home = () => {
 
   const productItems = () => {
     return products.map((item) => {
-      const { id, name, image, price } = item;
+      const { id, name, price } = item;
       return (
         <li key={id} className="text-black">
           {images.map((img, index) => (
