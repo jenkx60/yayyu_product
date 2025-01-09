@@ -1,16 +1,38 @@
-import React, { useState } from 'react'
+"use client"
+import React, { useEffect, useState, useRef } from 'react'
 import { FaTimes } from 'react-icons/fa'
-import { FaMinus } from 'react-icons/fa6';
+import { FaMinus, FaPlus } from 'react-icons/fa6';
 import SizeTabs from './SizeTabs';
 import ColorTabs from './ColorTabs';
 import PriceRange from './PriceRange';
+import Link from 'next/link';
+import CategoryAccordion from './CategoryAccordion';
 
 const Sidebar = ({ className, toggleSidebar }) => {
-    // const [ isSidebarOpen, setIsSidebarOpen ] = useState(false);
-    
-    // const toggleSidebar = () => {
-    //     setIsSidebarOpen(!isSidebarOpen);
-    // }
+    const [ dropdownOpen, setDropdownOpen ] = useState(false);
+    const [ isCategoryDropdownOpen, setCategoryDropdownOpen ] = useState(false);
+    const drop = useRef(null);
+
+    const toggleDropdown = () => {
+        setDropdownOpen((dropdownOpen) => !dropdownOpen);
+    }
+
+    const toggleCategoryOpen = () => {
+        setCategoryDropdownOpen((isCategoryDropdownOpen) => !isCategoryDropdownOpen);
+    };
+
+    useEffect(() => {
+        const handleOutsideClick = (e) => {
+            if (drop.current && !drop.current.contains(e.target)) {
+                setDropdownOpen(false);
+                setCategoryDropdownOpen(false);
+            }
+        };
+        document.addEventListener("mousedown", handleOutsideClick);
+        return () => {
+            document.removeEventListener("mousedown", handleOutsideClick);
+        };
+    }, []);
   return (
     <div className={`w-1/2 bg-white p-6 ${className}`}>
         {/* Close Icon */}
@@ -22,23 +44,32 @@ const Sidebar = ({ className, toggleSidebar }) => {
                 onClick={toggleSidebar}
                 className='text-gray-500 hover:text-gray-700'
             >
-                <div>
-                    <FaTimes className='text-xl' />
-                </div>
+                <FaTimes />
             </button>
         </div>
 
         <hr />
 
-        <div>
-            <div className='flex justify-between font-dmSans font-medium text-lg leading-5 my-6'>
-                <div>
-                    <h1>CATEGORY</h1>
-                </div>
-                <div>
-                    <FaMinus />
-                </div>
-            </div>
+        <div className='font-dmSans '>
+            <CategoryAccordion title='CATEGORY'>
+            <ul className='space-y-2 font-normal text-base leading-5'>
+                <Link href='/categories'>
+                    <li className='mb-4 pl-6'>KAFTAN</li>
+                </Link>
+
+                <Link href='/categories'>
+                    <li className='mb-4 pl-6'>SUIT</li>
+                </Link>
+
+                <Link href='/categories'>
+                    <li className='mb-4 pl-6'>GOWN</li>
+                </Link>
+
+                <Link href='/categories' >
+                    <li className='pl-6'>ADIRE</li>
+                </Link>
+            </ul>
+            </CategoryAccordion>
         </div>
 
         <hr />

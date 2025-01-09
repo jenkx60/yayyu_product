@@ -33,7 +33,7 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-  
+
   const toggleDropdown = () => {
     setDropdownOpen((dropdownOpen) => !dropdownOpen);
   };
@@ -89,7 +89,7 @@ const Navbar = () => {
                     className="flex flex-col gap-3 bg-white absolute w-36 p-4 border border-t-activehover border-t-4 shadow-sm top-5 left-0 z-0"
                   >
                     <Link href="/signup">COLLECTION</Link>
-                    <Link href="/login">CATEGORY</Link>
+                    <Link href="/category">CATEGORY</Link>
                   </div>
                 )}
               </div>
