@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -8,15 +8,21 @@ import Image from 'next/image';
 import model from "../public/svg/model.svg";
 import catimg from '@/app/public/svg/catimg.svg';
 import { BiAbacus } from 'react-icons/bi';
-import { FaAngleDown, FaMinus } from 'react-icons/fa6';
+import { FaAngleDown, FaArrowLeft, FaArrowRight, FaAngleUp } from 'react-icons/fa6';
 import Link from 'next/link';
 
 const Category = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const drop = useRef(null);
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
+
+    const toggleDropdown = () => {
+        setDropdownOpen((dropdownOpen) => !dropdownOpen);
+    }
 
     const images = Array(1).fill(model);
 
@@ -58,13 +64,25 @@ const Category = () => {
             );
         });
     };
+
+    useEffect(() => {
+        const handleDropdown = (e) => {
+            if (drop.current && !drop.current.contains(e.target)) {
+                setDropdownOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleDropdown);
+        return () => {
+            document.removeEventListener('mousedown', handleDropdown);
+        };
+    }, []);
   return (
     <div className='bg-white text-black'>
         <nav>
             <Navbar />
         </nav>
 
-        <main className='flex'>
+        <main className='flex mb-24'>
             {/* Sidebar */}
             <Sidebar
                 className={`fixed top-0 left-0 h-full w-1/4 transform transition-transform duration-300 ${
@@ -81,16 +99,16 @@ const Category = () => {
                     />
                 </div>
 
-                <div className='container mt-10'>
-                    <div className='font-dmSans font-semibold text-5xl leading-10'>
+                <div className='container mt-10 px-4 sm:px-6 lg:px-8'>
+                    <div className='font-dmSans font-semibold text-3xl sm:text-4xl lg:text-5xl leading-10'>
                         <h1>Adire</h1>
                     </div>
 
-                    <div className='flex justify-between mt-14'>
+                    <div className='flex flex-col sm:flex-row justify-between mt-14'>
                         {/* Toggle Sidebar on click */}
                         <div
                             onClick={toggleSidebar}
-                            className='flex cursor-pointer gap-3'>
+                            className='flex cursor-pointer gap-3 mb-4 sm:mb-0'>
                             <div>
                                 <BiAbacus />
                             </div>
@@ -100,13 +118,29 @@ const Category = () => {
                         </div>
                         
                         <div className='flex gap-2'>
-                            <h2>SORT BY </h2> <FaAngleDown />
+                            <h2>SORT BY </h2>
+                            <button className='transition-transform duration-300' onClick={toggleDropdown}>
+                                {dropdownOpen ?  <FaAngleUp /> : <FaAngleDown />}
+                            </button>
+                            {/* Sort Dropdown */}
+                            {dropdownOpen && (
+                                <div
+                                    ref={drop}
+                                    className="flex flex-col gap-3 bg-white absolute w-48 mt-7 p-4 border border-t-activehover border-t-4 shadow-sm right-12 z-0"
+                                >
+                                    <Link href='/'>NEWEST</Link>
+                                    <Link href='/'>OLDEST</Link>
+                                    <Link href='/'>A - Z</Link>
+                                    <Link href='/'>PRICE (LOW - HIGH)</Link>
+                                    <Link href='/'>PRICE (HIGH - LOW)</Link>
+                                </div>
+                            )}
                         </div>
                     </div>
 
                     <div className='mt-32'>
                         <div>
-                            <ul className='flex mb-16'>
+                            <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:mb-10'>
                                 {productItems()}
                                 {productItems()}
                                 {productItems()}
@@ -115,7 +149,7 @@ const Category = () => {
                         </div>
 
                         <div>
-                            <ul className='flex mb-16'>
+                            <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:mb-10'>
                                 {productItems()}
                                 {productItems()}
                                 {productItems()}
@@ -124,12 +158,31 @@ const Category = () => {
                         </div>
 
                         <div>
-                            <ul className='flex mb-16'>
+                            <ul className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:mb-10'>
                                 {productItems()}
                                 {productItems()}
                                 {productItems()}
                                 {productItems()}
                             </ul>
+                        </div>
+                    </div>
+
+                    <div className='flex sm:justify-center justify-end gap-3 font-dmSans font-normal'>
+                        <div className='flex gap-2 text-previous'>
+                            <FaArrowLeft className='text-sm mt-1.5'/>
+                            <h2 className='text-base py-0.5'>Previous</h2>
+                        </div>
+                        <div className='flex gap-5'>
+                            <h2 className='bg-black px-3 py-0.5 text-white rounded-lg'>1</h2>
+                            <h2 className='py-0.5'>2</h2>
+                            <h2 className='py-0.5'>3</h2>
+                            <h2 className='py-0.5'>...</h2>
+                            <h2 className='py-0.5'>67</h2>
+                            <h2 className='py-0.5'>68</h2>
+                            <h2 className='text-base py-0.5'>Next</h2>
+                        </div>
+                        <div className='flex gap-2 py-0.5'>
+                            <FaArrowRight className='text-sm mt-1'/>
                         </div>
                     </div>
                 </div>

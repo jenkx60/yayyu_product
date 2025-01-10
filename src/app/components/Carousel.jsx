@@ -62,10 +62,10 @@ const Carousel = () => {
             className="w-full h-full object-fill"
           />
           <div className="absolute inset-0 bg-opacity-40 rounded-lg flex flex-col justify-center place-items-center p-6">
-            <h3 className="text-5xl font-normal text-white font-dmSans leading-10 mb-4">
+            <h3 className="text-xl md:text-5xl font-normal text-white font-dmSans leading-10 mb-1 md:mb-4">
               {items[currentSlide].name}
             </h3>
-            <h3 className="text-5xl font-normal text-white font-dmSans leading-10">
+            <h3 className="text-xl md:text-5xl font-normal text-white font-dmSans leading-10">
               {items[currentSlide].description}
             </h3>
             <button className="bg-black text-white font-dmSans text-xs p-3 mt-4 hover:bg-activehover">
@@ -80,7 +80,7 @@ const Carousel = () => {
         <div className="overflow-hidden">{renderContent()}</div>
         <button
           onClick={handlePrevious}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4  p-2 rounded-full shadow-lg hover:bg-activehover focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+          className="absolute left-2 md:left top-1/2 transform -translate-y-1/2 -translate-x-4  p-2 rounded-full shadow-lg hover:bg-activehover focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
           aria-label="previous slide"
         >
           <FaChevronLeft className="w-6 h-6 text-gray-600" />
@@ -88,7 +88,7 @@ const Carousel = () => {
 
         <buton
           onClick={handleNext}
-          className="absolute -right-7 top-1/2 transform -translate-y-1/2 -translate-x-4 p-2 rounded-full shadow-lg hover:bg-activehover focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+          className="absolute right-2 md:-right-7 top-1/2 transform -translate-y-1/2 -translate-x-4 p-2 rounded-full shadow-lg hover:bg-activehover focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
           aria-label="next slide"
         >
           <FaChevronRight className="w-6 h-6 text-gray-600" />
