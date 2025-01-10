@@ -34,7 +34,7 @@ const Sidebar = ({ className, toggleSidebar }) => {
         };
     }, []);
   return (
-    <div className={`w-1/2 bg-white p-6 ${className}`}>
+    <div className={`sm:hidden md:block w-1/2 bg-white p-6 ${className}`}>
         {/* Close Icon */}
         <div className='flex justify-between font-dmSans font-medium text-lg leading-5 mb-6'>
                 <div>

@@ -38,6 +38,7 @@ module.exports = {
         tabyell: "EFB946",
         tabcyan: "#46CDEF",
         paycolor: "#F7F7F7",
+        previous: "#757575"
       },
       fontFamily: {
         dmSans: ['"DM Sans"', "sans-serif"],

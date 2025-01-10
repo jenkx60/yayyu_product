@@ -86,7 +86,7 @@ const Navbar = () => {
                 {dropdownOpen && (
                   <div
                     ref={drop}
-                    className="flex flex-col gap-3 bg-white absolute w-36 p-4 border border-t-activehover border-t-4 shadow-sm top-5 left-0 z-0"
+                    className="flex flex-col gap-3 bg-white absolute w-36 p-4 border border-t-activehover border-t-4 shadow-sm top-5 left-0 z-50"
                   >
                     <Link href="/signup">COLLECTION</Link>
                     <Link href="/category">CATEGORY</Link>
@@ -115,7 +115,7 @@ const Navbar = () => {
                 {dropdownUserOpen && (
                   <div
                     ref={drop}
-                    className="flex flex-col gap-3 bg-white absolute w-36 p-4 border border-t-activehover border-t-4 shadow-sm top-7 right-0 text-sm"
+                    className="flex flex-col gap-3 bg-white absolute w-36 p-4 border border-t-activehover border-t-4 shadow-sm top-7 right-0 text-sm z-50"
                   >
                     <Link href="/signup">SIGN UP</Link>
                     <Link href="/login">LOGIN</Link>
@@ -131,7 +131,7 @@ const Navbar = () => {
                 {isWishlistOpen && (
                   <div
                     ref={drop}
-                    className="flex flex-col gap-3 bg-white absolute w-96 h-auto p-4 border border-t-activehover border-t-4 shadow-sm top-7 right-0 text-sm"
+                    className="flex flex-col gap-3 bg-white absolute w-96 h-auto p-4 border border-t-activehover border-t-4 shadow-sm top-7 right-0 text-sm z-50"
                   >
                     <div className="flex justify-end">
                       <FaTimes />
