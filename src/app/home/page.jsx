@@ -1,7 +1,4 @@
-import React, { useContext } from "react";
-import Carousel from "../components/Carousel";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import React, { Suspense, useContext } from "react";
 import { FaChevronRight } from "react-icons/fa6";
 import Image from "next/image";
 import model from "../public/svg/model.svg";
@@ -10,6 +7,10 @@ import adire from "../public/svg/component7.svg";
 import kaftan from "../public/svg/component8.svg";
 import gown from "../public/svg/component9.svg";
 import Link from "next/link";
+
+const Carousel = React.lazy(() => import( "../components/Carousel"));
+const Navbar = React.lazy(() => import("../components/Navbar"));
+const Footer = React.lazy(() => import("../components/Footer"))
 
 const Home = () => {
   const images = Array(1).fill(model);
@@ -38,6 +39,7 @@ const Home = () => {
                   width={300}
                   height={250}
                   className='transition-transform duration-500 hover:scale-110'
+                  loading="lazy"
                 />
               </Link>
             </div>
@@ -54,10 +56,14 @@ const Home = () => {
   };
   return (
     <div className="bg-white">
-      <Navbar />
+      <Suspense fallback={<div className="text-5xl text-black">Loading Navbar</div>}>
+        <Navbar />
+      </Suspense>
 
       <main className="bg-white">
+      <Suspense fallback={<div>Loading Carousel</div>}>
         <Carousel />
+      </Suspense>
 
         <div>
           <div className="container flex justify-between text-black font-dmSans">
@@ -143,7 +149,8 @@ const Home = () => {
               alt="suit" 
               width={612} 
               height={475}
-              className="w-full h-auto object-cover" 
+              className="w-full h-auto object-cover"
+              loading="lazy" 
             />
             <div className="absolute bg-black inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer bg-opacity-50">
               <Link href="/shopping">
@@ -159,6 +166,7 @@ const Home = () => {
               width={612} 
               height={475}
               className="w-full h-auto object-cover"
+              loading="lazy"
             />
             <div className="absolute bg-black inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer bg-opacity-50">
               <Link href="/shopping">
@@ -174,6 +182,7 @@ const Home = () => {
               width={612} 
               height={475}
               className="w-full h-auto object-cover"
+              loading="lazy"
             />
             <div className="absolute bg-black inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer bg-opacity-50">
               <Link href="/shopping">
@@ -189,6 +198,7 @@ const Home = () => {
               width={612} 
               height={475}
               className="w-full h-auto object-cover"
+              loading="lazy"
             />
             <div className="absolute bg-black inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-300 cursor-pointer bg-opacity-50">
               <Link href="/shopping">
@@ -198,7 +208,9 @@ const Home = () => {
           </div>
         </div>
       </main>
-      <Footer />
+      <Suspense fallback={<div>Loading Footer</div>}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };
