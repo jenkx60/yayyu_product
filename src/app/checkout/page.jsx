@@ -16,7 +16,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Footer from '../components/Footer';
 import OrderSummary from '../components/OrderSummary';
 
-const checkout = () => {
+const Checkout = () => {
 
     const initialValues = {
         country: '',
@@ -662,4 +662,4 @@ const checkout = () => {
   )
 }
 
-export default checkout
+export default Checkout;
