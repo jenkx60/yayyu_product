@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import { FcGoogle } from 'react-icons/fc';
 import * as yup from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import Link from 'next/link';
 
 const Login = () => {
 
@@ -95,7 +96,9 @@ const Login = () => {
 
                                 <div className='text-black w-1/2 flex flex-col items-center justify-center'>
                                     {/* <div className='bg-black text-white w-full flex justify-center'> */}
-                                        <button className='bg-black text-white w-full flex justify-center text-center py-4 font-dmSans font-medium'>Log in</button>
+                                    <Link href='/account' className='bg-black text-white w-full flex justify-center text-center py-4 font-dmSans font-medium'>
+                                        <button>Log in</button>
+                                    </Link>
                                     {/* </div> */}
 
                                         <h1 className='text-center font-dmSans my-4'>OR</h1>
