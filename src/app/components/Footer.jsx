@@ -20,7 +20,7 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-center lg:justify-evenly gap-8 ">
             {/* Logo Section */}
             <div className="w-full lg:w-auto flex justify-center lg:justify-start">
-              <Link href="/home">
+              <Link href="/">
                 <Image
                   src={yayyuLogo}
                   alt="Yayyu Logo"
@@ -36,7 +36,7 @@ const Footer = () => {
                   <strong>QUICK LINK</strong>
                 </h1>
                 <ul className="leading-7 font-medium text-sm">
-                  <Link href='/home'>
+                  <Link href='/'>
                     <li>Home</li>
                   </Link>
 
