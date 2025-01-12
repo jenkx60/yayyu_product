@@ -167,13 +167,13 @@ const Category = () => {
                         </div>
                     </div>
 
-                    <div className='flex sm:justify-center justify-end gap-3 font-dmSans font-normal'>
+                    <div className='flex sm:justify-center md:justify-end justify-end gap-3 font-dmSans font-normal'>
                         <div className='flex gap-2 text-previous'>
                             <FaArrowLeft className='text-sm mt-1.5'/>
                             <h2 className='text-base py-0.5'>Previous</h2>
                         </div>
-                        <div className='flex gap-5'>
-                            <h2 className='bg-black px-3 py-0.5 text-white rounded-lg'>1</h2>
+                        <div className='flex gap-5 cursor-pointer '>
+                            <h2 className='bg-black hover:bg-slate-800 px-3 py-0.5 text-white rounded-lg'>1</h2>
                             <h2 className='py-0.5'>2</h2>
                             <h2 className='py-0.5'>3</h2>
                             <h2 className='py-0.5'>...</h2>

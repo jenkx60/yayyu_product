@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import { FcGoogle } from 'react-icons/fc';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import Link from 'next/link';
 
 // const Forms = () => {
 //     let initialValues = {
@@ -171,14 +172,16 @@ const Signup = () => {
                     
                                 <div className='text-black w-1/2 flex flex-col items-center justify-center'>
                                     {/* <div className='bg-black text-white w-full flex justify-center'> */}
-                                        <button className='bg-black text-white w-full flex justify-center text-center py-4 font-dmSans font-medium'>Signup</button>
+                                    <Link href='/login' className='bg-black hover:bg-activehover text-white w-full flex justify-center text-center py-4 font-dmSans font-medium'>
+                                        <button >Signup</button>
+                                    </Link>
                                     {/* </div> */}
                     
                                     <h1 className='text-center font-dmSans my-4'>OR</h1>
                                 </div>
                     
-                                <div className='flex flex-col items-center justify-center bg-black text-white w-1/2'>
-                                    <button className='flex justify-center gap-3 bg-black text-white py-4 font-dmSans font-medium'><div><FcGoogle className='text-2xl'/></div>Sign up with Google</button>
+                                <div className='flex gap-2 items-center justify-center bg-black text-white w-1/2 hover:bg-activehover'>
+                                    <FcGoogle className='text-2xl'/><button className='flex justify-center gap-3 bg-black hover:bg-activehover text-white py-4 font-dmSans font-medium'>Sign up with Google</button>
                                 </div>
                             </div>
                         </Form>
