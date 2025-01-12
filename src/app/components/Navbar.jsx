@@ -75,7 +75,7 @@ const Navbar = () => {
           {/* Navigation */}
           <div className=" text-black font-dmSans text-sm font-normal">
             <div className="container sm:hidden lg:flex gap-5">
-              <Link href="/home">HOME</Link>
+              <Link href="/">HOME</Link>
               <Link href="/about">ABOUT</Link>
               <div className="flex gap-1 relative">
                 <Link href="/shop">SHOP</Link>
@@ -99,7 +99,7 @@ const Navbar = () => {
 
           {/* logo */}
           <div className="flex md:flex md:justify-center lg:justify-center items-center">
-            <Link href="/home" className="cursor-pointer">
+            <Link href="/" className="cursor-pointer">
               <Image src={yayyuLogo} alt="Yayyu Logo" />
             </Link>
           </div>
@@ -212,7 +212,7 @@ const Navbar = () => {
           </div>
 
           <div className="lg:hidden flex flex-col items-center gap-3">
-            <Link href="/home" onClick={toggleMobileMenu}>
+            <Link href="/" onClick={toggleMobileMenu}>
               HOME
             </Link>
             <Link href="/about" onClick={toggleMobileMenu}>
