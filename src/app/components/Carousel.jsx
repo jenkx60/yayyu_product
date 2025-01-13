@@ -68,7 +68,7 @@ const Carousel = () => {
             <h3 className="text-xl md:text-5xl font-normal text-white font-dmSans leading-10">
               {items[currentSlide].description}
             </h3>
-            <button className="bg-black text-white font-dmSans text-xs p-3 mt-4 hover:bg-activehover">
+            <button className="bg-black text-white font-dmSans text-xs p-3 mt-4 md:py-4 px-8 hover:bg-activehover">
               SHOP COLLECTION NOW
             </button>
           </div>

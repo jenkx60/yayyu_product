@@ -1,3 +1,4 @@
+"use client"
 import React, { Suspense, useContext } from "react";
 import { FaChevronRight } from "react-icons/fa6";
 import Image from "next/image";
@@ -7,6 +8,7 @@ import adire from "./public/svg/component7.svg";
 import kaftan from "./public/svg/component8.svg";
 import gown from "./public/svg/component9.svg";
 import Link from "next/link";
+import CartButton from "./components/CartButton";
 
 const Carousel = React.lazy(() => import( "./components/Carousel"));
 const Navbar = React.lazy(() => import("./components/Navbar"));
@@ -23,6 +25,12 @@ const Home = () => {
       price: 150000.0,
     },
   ];
+
+  // const handleAddToCart = (product) => {
+  //   const updatedCart = [...cartItems, product];
+  //   setCartItems(updatedCart);
+  //   localStorage.setItem('cart', JSON.stringify(updatedCart));
+  // };
 
 
   const productItems = () => {
@@ -50,6 +58,12 @@ const Home = () => {
           <p className="flex justify-center font-dmSerifDis text-xl leading-6">
             ₦{price.toLocaleString()}.00
           </p>
+
+          {/* <button
+            className="bg-black hover:bg-activehover text-white font-bold py-2 px-4 rounded mt-2"
+            onClick={() => handleAddToCart(item)}
+          >Add to Cart</button> */}
+          {/* <CartButton /> */}
         </li>
       );
     });

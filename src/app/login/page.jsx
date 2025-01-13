@@ -95,17 +95,15 @@ const Login = () => {
                                 </div>
 
                                 <div className='text-black w-1/2 flex flex-col items-center justify-center'>
-                                    {/* <div className='bg-black text-white w-full flex justify-center'> */}
-                                    <Link href='/account' className='bg-black text-white w-full flex justify-center text-center py-4 font-dmSans font-medium'>
+                                    <Link href='/account' className='bg-black text-white w-full flex justify-center text-center py-4 font-dmSans font-medium hover:bg-activehover'>
                                         <button>Log in</button>
                                     </Link>
-                                    {/* </div> */}
 
                                         <h1 className='text-center font-dmSans my-4'>OR</h1>
                                 </div>
 
-                                <div className='flex flex-col items-center justify-center bg-black text-white w-1/2'>
-                                    <button className='flex justify-center gap-3 bg-black text-white py-4 font-dmSans font-medium'><div><FcGoogle className='text-2xl'/></div>Log in with Google</button>
+                                <div className='flex gap-2 items-center justify-center bg-black text-white w-1/2 hover:bg-activehover'>
+                                    <FcGoogle className='text-2xl'/><button className='flex justify-center gap-3 bg-black text-white py-4 font-dmSans font-medium hover:bg-activehover'>Log in with Google</button>
                                 </div>
                             </div>
                         </Form>
