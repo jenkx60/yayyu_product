@@ -21,12 +21,25 @@
 //     );
 // }
 
-import React from 'react'
+// "use client"
+// import React, { useState } from 'react'
+// const CartContext = createContext();
 
-const CartContext = () => {
-  return (
-    <div>CartContext</div>
-  )
-}
+// const CartProvider = ({ children }) => {
+//   const [cartItems, setCartItems] = useState(() => {
+//     const storedCart = localStorage.getItem('cart');
+//     return storedCart ? JSON.parse(storedCart) : [];
+//   });
 
-export default CartContext
+//   const updateCart = (newCart) => {
+//     setCartItems(newCart);
+//     localStorage.setItem('cart', JSON.stringify(newCart));
+//   }
+//   return (
+//     <CartContext.Provider value={{ cartItems, updateCart }}>
+//       {children}
+//     </CartContext.Provider>
+//   );
+// };
+
+// export { CartContext, CartProvider };

@@ -12,6 +12,7 @@ import {
   FaRegHeart,
   FaSistrix,
   FaBars,
+  FaBagShopping,
 } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 import {
@@ -21,6 +22,7 @@ import {
   FaXTwitter,
   FaLinkedin,
 } from "react-icons/fa6";
+import { MdOutlineShoppingBag } from 'react-icons/md';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,6 +30,7 @@ const Navbar = () => {
   const [dropdownUserOpen, setDropdownUserOpen] = useState(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isSearchBar, setIsSearchBar] = useState(false);
+  const [isCartBag, setIsCartBag] = useState(false);
   const drop = useRef(null);
 
   const toggleMobileMenu = () => {
@@ -45,6 +48,14 @@ const Navbar = () => {
   const toggleWishlistOpen = () => {
     setIsWishlistOpen((isWishlistOpen) => !isWishlistOpen);
   };
+
+  const toggleSearchBar = () => {
+    setIsSearchBar((isSearchBar) => !isSearchBar);
+  }
+
+  const toggleCartBag = () => {
+    setIsCartBag((isCartBag) => !isCartBag);
+  }
 
   useEffect(() => {
     const handleDropdown = (e) => {
@@ -137,9 +148,9 @@ const Navbar = () => {
                       <FaTimes />
                     </div>
                     {/* <div className='flex flex-col gap-3 justify-center items-center mt-24'>
-                                            <h1 className='text-2xl'>Your cart is empty</h1>
-                                            <button className='bg-black text-white text-xs px-6 py-3 hover:bg-activehover'>CONTINUE SHOPPING</button>
-                                        </div> */}
+                          <h1 className='text-2xl'>Your cart is empty</h1>
+                          <button className='bg-black text-white text-xs px-6 py-3 hover:bg-activehover'>CONTINUE SHOPPING</button>
+                        </div> */}
                     <div className="flex gap-4">
                       <Image
                         src={model}
@@ -179,18 +190,35 @@ const Navbar = () => {
                   <FaSistrix />
                 </button>
               </div>
-
-              {/* <div className='-pt-2'><Image src={bagIcon} alt='Cart Empty' width={28} height={30} className=''/></div> */}
-            </div>
-            <div className="-pt-2">
-              <Image
+              
+              <div className="-pt-2">
+              {/* <Image
                 src={bagIcon}
                 alt="Cart Empty"
                 width={28}
                 height={30}
                 className=""
-              />
+              /> */}
+              <button onClick={toggleCartBag}>
+                <MdOutlineShoppingBag />
+              </button>
+              
+              {isCartBag && (
+                <div
+                  ref={drop}
+                  className="flex flex-col gap-3 bg-white absolute w-36 p-4 border border-t-activehover border-t-4 shadow-sm top-7 right-0 text-sm z-50">
+                    <div>
+                      <div className="flex">
+                        <p>Item added in your bag (1)</p>
+                        <FaTimes />
+                      </div>
+                    </div>
+                </div>
+              )}
             </div>
+              {/* <div className='-pt-2'><Image src={bagIcon} alt='Cart Empty' width={28} height={30} className=''/></div> */}
+            </div>
+            
           </div>
           {/* </div> */}
         </div>
