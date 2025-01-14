@@ -49,14 +49,16 @@ const ProductTabs = () => {
                 <textarea 
                   type="message"
                   placeholder="Tell your experience"
-                  className='w-3/4 border-2'
+                  className='w-3/4 border border-gray-100 placeholder:text-sm'
                   rows={4}
                 ></textarea>
+
+                <div className='flex justify-end w-3/4 mt-2'>
+                  <button className='bg-black py-2 px-8 text-white hover:bg-activehover'>SEND</button>
+                </div>
               </div>
 
-              <div className='flex'>
-                <button>SEND</button>
-              </div>
+              
             </div>
           );
         default:
