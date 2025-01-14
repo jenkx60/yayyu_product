@@ -18,14 +18,44 @@ import Link from "next/link";
 import ProductTabs from "../components/ProductTabs";
 
 const Shopping = () => {
-  const [count, setCount] = useState(1);
+  const images = Array(1).fill(model);
 
-  const increment = () => {
-    setCount(count + 1);
-  };
+  const products = [
+    {
+      id: 1,
+      image: model.src,
+      name: 'THE ADIRE ATTIRE',
+      price: 150000.0,
+    },
+  ];
 
-  const decrement = () => {
-    setCount(count - 1);
+  const productItems = () => {
+    return products.map((item) => {
+      const { id, name, price } = item;
+      return (
+        <li key={id} className="text-black">
+          {images.map((img, index) => (
+            <div key={index} className="overflow-hidden">
+              <Link href='/category'>
+                <Image
+                  src={img}
+                  alt={`Images of ${index + 1}`}
+                  width={300}
+                  height={250}
+                  className='transition-transform duration-500 hover:scale-110' 
+                />
+              </Link>
+            </div>
+          ))}
+          <h3 className="flex justify-center font-dmSans text-sm leading-4 mt-4">
+            {name}
+          </h3>
+          <p className="flex justify-center font-dmSerifDis text-xl leading-6">
+            ₦{price.toLocaleString()}.00
+          </p>
+        </li>
+      );
+    });
   };
   return (
     <div className="bg-white text-black">
@@ -83,7 +113,7 @@ const Shopping = () => {
           </div>
         </div>
 
-        <div className=" w-full">
+        <div className=" w-full mb-9">
           <div className="font-dmSans font-medium text-3xl leading-9 mb-4">
             <h1>GOWN</h1>
           </div>
@@ -174,6 +204,23 @@ const Shopping = () => {
           <div className="mt-5">
             <ProductTabs />
           </div>
+        </div>
+      </main>
+
+      <main className="container my-24 flex flex-col">
+        <div className="">
+            <div className="flex justify-center font-dmSans font-medium text-xl leading-9 mb-10">
+              <h1>YOU MAY ALSO LIKE</h1>
+            </div>
+
+            <div>
+              <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+                {productItems()}
+                {productItems()}
+                {productItems()}
+                {productItems()}
+              </ul>
+            </div>
         </div>
       </main>
 
