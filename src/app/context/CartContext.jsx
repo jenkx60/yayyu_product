@@ -43,3 +43,38 @@
 // };
 
 // export { CartContext, CartProvider };
+
+// import React, { createContext, useState } from 'react';
+
+// const CartContext = createContext();
+
+// const CartProvider = ({ children }) => {
+//     const [cart, setCart] = useState([]);
+//     const [wishlist, setWishlist] = useState([]);
+//     const [counter, setCounter] = useState(0);
+
+//     const addToCart = (product) => {
+//         setCart([...cart, product]);
+//         setCounter(counter + 1);
+//     };
+
+//     const removeFromCart = (productId) => {
+//         setCart([...cart, product]);
+//         setCounter(counter - 1);
+//     };
+
+//     const addToWishlist = (product) => {
+//         setWishlist([...wishlist, product]);
+//     };
+
+//     const removeFromWishlist = (productId) => {
+//         setWishlist(wishlist.filter((product) => product.id === productId));
+//     }
+//   return (
+//     <CartContext.Provider value={{ cart, wishlist, counter, addToCart, removeFromCart, addToWishlist, removeFromWishlist }}>
+//         {children}
+//     </CartContext.Provider>
+//   );
+// };
+
+// export {CartProvider, CartContext};
