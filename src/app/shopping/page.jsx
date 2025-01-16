@@ -3,21 +3,25 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Image from "next/image";
-// import cheackouthead from "../public/Frame 23 checkout.svg";
 import shophead from "../public/svg/Frame 23 shopping.svg";
 import model from "../public/svg/model.svg";
-// import ProductTabs from "../components/ProductTabs";
-import { FaBagShopping, FaMinus, FaPlus, FaRegStar, FaStar } from "react-icons/fa6";
+import { FaRegStar, FaStar } from "react-icons/fa6";
 import SizeTabs from "../components/SizeTabs";
 import ColorTabs from "../components/ColorTabs";
 import CartCounter from "../components/CartCounter";
-import { FaShoppingBag } from "react-icons/fa";
 import { CiCreditCard1, CiHeart } from "react-icons/ci";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import { IoMdHeart } from "react-icons/io";
 import Link from "next/link";
 import ProductTabs from "../components/ProductTabs";
 
 const Shopping = () => {
+  const [isWishlist, setIsWishlist] = useState(false);
+
+  const toggleWishlist = () => {
+    setIsWishlist(!isWishlist);
+  };
+
   const images = Array(1).fill(model);
 
   const products = [
@@ -82,7 +86,7 @@ const Shopping = () => {
               className="border-2"
             />
           </div>
-          <div className="flex gap-2.5 mt-1.5">
+          <div className="flex gap-2.5 mt-3">
             <div>
               <Image
                 src={model}
@@ -189,7 +193,11 @@ const Shopping = () => {
               </div>
 
               <div className="bg-gray-200 text-black p-4 w-1/6 flex gap-3 justify-center font-dmSans font-normal text-xl">
-                <CiHeart className="text-2xl place-items-center"/>
+                <button
+                  onClick={toggleWishlist}
+                >
+                  {isWishlist ? <CiHeart className="text-2xl place-items-center"/> : <IoMdHeart className="text-2xl place-items-center"/>}
+                </button>
               </div>
             </div>
           </div>
