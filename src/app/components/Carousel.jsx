@@ -5,6 +5,7 @@ import heroimg2 from "../public/svg/Frame 28.svg";
 import heroimg3 from "../public/svg/Frame 29.svg";
 import React, { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import Link from "next/link";
 
 const Carousel = () => {
   const display = [
@@ -68,9 +69,13 @@ const Carousel = () => {
             <h3 className="text-xl md:text-5xl font-normal text-white font-dmSans leading-10">
               {items[currentSlide].description}
             </h3>
-            <button className="bg-black text-white font-dmSans text-xs p-3 mt-4 md:py-4 px-8 hover:bg-activehover">
-              SHOP COLLECTION NOW
-            </button>
+
+            <Link href='/category'>
+              <button className="bg-black text-white font-dmSans text-xs p-3 mt-4 md:py-4 px-8 hover:bg-activehover">
+                SHOP COLLECTION NOW
+              </button>
+            </Link>
+            
           </div>
         </div>
       );

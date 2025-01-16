@@ -8,6 +8,7 @@ import adire from "./public/svg/component7.svg";
 import kaftan from "./public/svg/component8.svg";
 import gown from "./public/svg/component9.svg";
 import Link from "next/link";
+import { motion } from "framer-motion";
 // import CartButton from "./components/CartButton";
 
 const Carousel = React.lazy(() => import( "./components/Carousel"));
@@ -37,7 +38,13 @@ const HomePage = () => {
     return products.map((item) => {
       const { id, name, price } = item;
       return (
-        <li key={id} className="text-black">
+        <motion.li 
+          key={id} 
+          className="text-black"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          >
           {images.map((img, index) => (
             <div key={index} className="overflow-hidden">
               <Link href='/category'>
@@ -64,7 +71,7 @@ const HomePage = () => {
             onClick={() => handleAddToCart(item)}
           >Add to Cart</button> */}
           {/* <CartButton /> */}
-        </li>
+        </motion.li>
       );
     });
   };

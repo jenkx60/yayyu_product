@@ -186,9 +186,22 @@ const Navbar = () => {
               </div>
 
               <div className="flex gap-1 relative">
-                <button onClick={() => setIsSearchBar(!isSearchBar)}>
+                <button onClick={toggleSearchBar}>
                   <FaSistrix />
                 </button>
+
+                {isSearchBar && (
+                  <div
+                    ref={drop}
+                    className="absolute top-10 left-0 w-full bg-white p-4 shadow-md"
+                  >
+                    <input
+                      type="search"
+                      placeholder="Search"
+
+                    />
+                  </div>
+                )}
               </div>
               
               <div className="-pt-2">

@@ -14,6 +14,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoMdHeart } from "react-icons/io";
 import Link from "next/link";
 import ProductTabs from "../components/ProductTabs";
+// import * as motion from "motion/react-client";
 
 const Shopping = () => {
   const [isWishlist, setIsWishlist] = useState(false);
