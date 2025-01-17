@@ -23,6 +23,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa6";
 import { MdOutlineShoppingBag } from 'react-icons/md';
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,6 +32,7 @@ const Navbar = () => {
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isSearchBar, setIsSearchBar] = useState(false);
   const [isCartBag, setIsCartBag] = useState(false);
+  const [isSearchbarOpen, setIsSearchbarOpen] = useState(false);
   const drop = useRef(null);
 
   const toggleMobileMenu = () => {
@@ -51,10 +53,14 @@ const Navbar = () => {
 
   const toggleSearchBar = () => {
     setIsSearchBar((isSearchBar) => !isSearchBar);
-  }
+  };
 
   const toggleCartBag = () => {
     setIsCartBag((isCartBag) => !isCartBag);
+  };
+
+  const toggleSearchbar =() => {
+    setIsSearchbarOpen((prev) => !prev);
   }
 
   useEffect(() => {
@@ -190,18 +196,14 @@ const Navbar = () => {
                   <FaSistrix />
                 </button>
 
-                {isSearchBar && (
-                  <div
-                    ref={drop}
-                    className="absolute top-10 left-0 w-full bg-white p-4 shadow-md"
-                  >
-                    <input
-                      type="search"
-                      placeholder="Search"
-
-                    />
-                  </div>
-                )}
+                {isSearchbarOpen && (
+                   <SearchBar
+                    className={`fixed top-0 left-0 h-1/3 w-full transform transition-transform duration-300 z-50 ${
+                      isSearchBar ? "translate-y-0" : "-translate-y-full"
+                    }`} 
+                    toggleSearchBar={toggleSearchBar}
+                   />
+                  )}
               </div>
               
               <div className="-pt-2">
