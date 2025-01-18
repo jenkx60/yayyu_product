@@ -51,17 +51,17 @@ const Navbar = () => {
     setIsWishlistOpen((isWishlistOpen) => !isWishlistOpen);
   };
 
-  const toggleSearchBar = () => {
-    setIsSearchBar((isSearchBar) => !isSearchBar);
+  const toggleSearchbar = () => {
+    setIsSearchBar(!isSearchBar);
   };
 
   const toggleCartBag = () => {
     setIsCartBag((isCartBag) => !isCartBag);
   };
 
-  const toggleSearchbar =() => {
-    setIsSearchbarOpen((prev) => !prev);
-  }
+  // const toggleSearchbar =() => {
+  //   setIsSearchbarOpen((prev) => !prev);
+  // }
 
   useEffect(() => {
     const handleDropdown = (e) => {
@@ -191,8 +191,20 @@ const Navbar = () => {
                 )}
               </div>
 
+              <SearchBar
+                className={`fixed top-0 left-0 h-1/2 w-full transform transition-transform duration-500 ${
+                  isSearchBar ? "translate-y-0" : "-translate-y-full"
+                }`} 
+                  toggleSearchbar={toggleSearchbar}
+              />
               <div className="flex gap-1 relative">
-                <button onClick={toggleSearchBar}>
+                <div onClick={toggleSearchbar} className="">
+                  <button >
+                      <FaSistrix />
+                  </button>
+                  
+                </div>
+                {/* <button onClick={toggleSearchBar}>
                   <FaSistrix />
                 </button>
 
@@ -203,7 +215,11 @@ const Navbar = () => {
                     }`} 
                     toggleSearchBar={toggleSearchBar}
                    />
-                  )}
+                  )} */}
+
+                 
+
+
               </div>
               
               <div className="-pt-2">

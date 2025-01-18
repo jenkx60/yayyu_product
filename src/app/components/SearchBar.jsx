@@ -6,11 +6,11 @@ const SearchBar = ({ className, toggleSearchbar }) => {
     const [ isSearchbar, setIsSearchbar ] = useState(false);
     const drop = useRef(null);
 
-    const toggleDropdown = () => {
+    const toggleSearchDropdown = () => {
         setDropdownOpen((dropdownOpen) => !dropdownOpen);
     };
 
-    const toggleSearchBar = () => {
+    const toggleSearchBarOpen = () => {
         setIsSearchbar((isSearchbar) => !isSearchbar);
     };
 
@@ -27,11 +27,11 @@ const SearchBar = ({ className, toggleSearchbar }) => {
         };
     }, []);
   return (
-    <div ref={drop} className={className}>
+    <div className={`flex justify-end w-1/2 h-full bg-white ${className}`}>
         {/* Close Icon */}
-        <div className={`flex justify-end w-1/2 h-full bg-white ${className}`}>
+        <div className='flex justify-end font-dmSans font-medium text-lg leading-5 mb-6'>
             <button
-                onClick={toggleSearchbar}
+                onClick={toggleSearchBarOpen}
                 className='text-black hover:text-gray-900'
             >
                 <FaTimes />
@@ -40,18 +40,22 @@ const SearchBar = ({ className, toggleSearchbar }) => {
 
         {/* Searchbar */}
         <div>
-            <div className={`flex justify-center w-full bg-white p-6 ${className}`}>
+            <div className={``}>
+                <button
+                    onClick={toggleSearchbar}
+                    className='text-black hover:text-gray-900'
+                >
+                    <FaTimes />
+                </button>
+            </div>
+            {/* <div className={`flex justify-center w-full h-12 ${isSearchbar ? 'block
+            ' : 'hidden'}`}> */}
+            <div className={`flex justify-center w-full h-12 ${isSearchbar ? 'block' : 'hidden'}`}>
                 <input
                     type="text"
                     placeholder='Search'
                     className='w-3/4 h-10 p-2 rounded-lg'
                 />
-                <button
-                onClick={toggleSearchBar}
-                className='text-black hover:text-gray-900'
-                >
-                    <FaSearch />
-                </button>
             </div>
         </div>
     </div>

@@ -85,7 +85,7 @@ const Category = () => {
         <main className='flex mb-24'>
             {/* Sidebar */}
             <Sidebar
-                className={`fixed top-0 left-0 h-full w-1/4 transform transition-transform duration-300 ${
+                className={`fixed top-0 left-0 h-full w-1/3 transform transition-transform duration-300 ${
                     isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
                 }`} 
                 toggleSidebar={toggleSidebar} // Pass the toogle function
