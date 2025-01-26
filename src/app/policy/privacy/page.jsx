@@ -110,7 +110,7 @@ const privacy = () => {
 
                 <div className='mb-8 font-medium'>
                     <h3>
-                        <strong>7. Children's Privacy</strong>
+                        <strong>7. Children&apos;s Privacy</strong>
                     </h3>
                     <p>Our website is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have inadvertently collected personal information from a child under the age of 13, we will take steps to delete that information as quickly as possible.</p>
                 </div>

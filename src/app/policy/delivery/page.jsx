@@ -126,7 +126,7 @@ const delivery = () => {
 
               <ol style={{listStyleType: 'disc', paddingLeft: '2rem'}}>
                 <li>We do not deliver to P.O. Boxes, APO/FPO addresses, or international forwarding addresses.</li>
-                <li>Remote Areas: Some rural or remote areas may experience longer delivery times, depending on the courier's coverage.</li>
+                <li>Remote Areas: Some rural or remote areas may experience longer delivery times, depending on the courier&apos;s coverage.</li>
               </ol>
           </div>
 
