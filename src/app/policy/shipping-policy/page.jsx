@@ -109,8 +109,8 @@ const shippingPolicy = () => {
               </h3>
 
               <ol style={{listStyleType: 'disc', paddingLeft: '2rem'}}>
-                <li>Once your order ships, you’ll receive a tracking number via email. You can track the progress of your order through the courier's website.</li>
-                <li>If you haven’t received tracking information within 3 business days, please reach out to our Customer Service team for assistance.</li>
+                <li>Once your order ships, you&apos;ll receive a tracking number via email. You can track the progress of your order through the courier&apos;s website.</li>
+                <li>If you haven&apos;t received tracking information within 3 business days, please reach out to our Customer Service team for assistance.</li>
               </ol>
             </div>
 
@@ -131,7 +131,7 @@ const shippingPolicy = () => {
               </h3>
 
               <ol style={{listStyleType: 'disc', paddingLeft: '2rem'}}>
-                <li>We’re not responsible for lost or stolen packages once the tracking shows they have been delivered. However, if your package is marked as delivered but you haven't received it, please contact the shipping carrier to initiate an investigation.</li>
+                <li>We&apos;re not responsible for lost or stolen packages once the tracking shows they have been delivered. However, if your package is marked as delivered but you haven&apos;t received it, please contact the shipping carrier to initiate an investigation.</li>
                 <li>If you need help, feel free to contact our Customer Service team at [Customer Service Email] and we will assist you.</li>
               </ol>
             </div>

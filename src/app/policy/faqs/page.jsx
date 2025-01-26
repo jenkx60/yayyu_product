@@ -26,8 +26,8 @@ const faqs = () => {
                 </div>
 
                 <div className='mb-8 font-medium'> 
-                    <p>Welcome to our FAQ section! Here, you'll find answers to the most common questions about 
-                        our products, ordering process, shipping, returns, and more. If you don't find the answer you are looking for,
+                    <p>Welcome to our FAQ section! Here, you&apos;ll find answers to the most common questions about 
+                        our products, ordering process, shipping, returns, and more. If you don&apos;t find the answer you are looking for,
                         feel free to contact our customer service team at [Customer Service Email].  </p>
                 </div>
 
@@ -42,10 +42,10 @@ const faqs = () => {
                         <li>Choose your size, color, and any other relevant options.</li>
                         <li>Add your items to the cart.</li>
                         <li>Go to the checkout page, enter your shipping information, and select your preferred payment method.</li>
-                        <li>Review your order and click "Place Order" to complete your purchase.</li>
+                        <li>Review your order and click &quot;Place Order&quot; to complete your purchase.</li>
                     </ol>
 
-                    <p>You'll recieve an email confirmation once your order is successfully placed!</p>
+                    <p>You&apos;ll recieve an email confirmation once your order is successfully placed!</p>
                 </div>
 
                 <div className='mb-8 font-medium'>
@@ -69,9 +69,9 @@ const faqs = () => {
                     <h3>
                         <strong>3. How can I track my order?</strong>
                     </h3>
-                    <p>Once your order ships, you will recieve an email with a tracking number and a link to the carrier's website. You can use this to track the status of your delivery in real time.</p>
+                    <p>Once your order ships, you will recieve an email with a tracking number and a link to the carrier&apos;s website. You can use this to track the status of your delivery in real time.</p>
 
-                    <p>If you haven't recieved tracking information within 3 business days of placing your order, please reach out to our customer service team.</p>
+                    <p>If you haven&apos;t recieved tracking information within 3 business days of placing your order, please reach out to our customer service team.</p>
                 </div>
 
                 <div className='mb-8 font-medium'>
@@ -86,7 +86,7 @@ const faqs = () => {
                     <h3>
                         <strong>5. What if I receive a damaged or defective item?</strong>
                     </h3>
-                    <p>We're sorry if your order arrivedd damaged or defective! Please contact us within 7 days of receiving your item with the following information:</p>
+                    <p>We&apos;re sorry if your order arrivedd damaged or defective! Please contact us within 7 days of receiving your item with the following information:</p>
 
                     <ol style={{listStyleType: 'disc', paddingLeft: '2rem'}}>
                         <li>Your order number</li>
