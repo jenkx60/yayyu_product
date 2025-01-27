@@ -40,7 +40,7 @@ const Carousel = () => {
         }, 5000);
         return () => clearInterval(interval);
       }
-    }, [currentSlide, isPaused, autoSlide]);
+    }, [currentSlide, handleNext, isPaused, autoSlide]);
 
     const handlePrevious = () => {
       setCurrentSlide(
